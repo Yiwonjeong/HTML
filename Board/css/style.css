@@ -281,7 +281,7 @@ header > p {
     height: auto;
     border-collapse: collapse;
     border-spacing: 0;
-    border-top: 2px solid #111;
+
 }
 #board table th{
     width: auto;
@@ -293,14 +293,18 @@ header > p {
     text-align: left;
     margin-bottom: 6px;
 }
-#board table td{
-    width: auto;
-    height: 40px;
+#board > .list > table td{
+    padding: 12px 6px;
+    border-top: 1px solid #e9e9e9;
     border-bottom: 1px solid #e9e9e9;
     text-align: center;
 }
-#board table td:nth-child(1){}
-#board table td:nth-child(2){
+#board > .list > table td:nth-child(1){
+    width: 50px;
+    text-align: center;
+    background: #fff;
+}
+#board > .list > table td:nth-child(2){
     text-align: left;
 }
 #board table td:nth-child(3){}
@@ -325,6 +329,9 @@ header > p {
     border: 1px solid #6d6d6d;
     background-color: #888;
     color: #fff;
+}
+#board > .list > a {
+   float: right;
 }
 footer{
     width: 100%;
@@ -351,14 +358,27 @@ footer > p {
     margin: 60px auto;
     overflow: hidden;
 }
-#board > .write > caption {
+#board caption {
     float: left;
     margin-bottom: 6px;
 }
+#board table tr:nth-child(1) {
+    border-top: 2px solid black;
+}
+#board table td {
+    border-bottom: 1px solid #e9e9e9;
+}
 #board table td:nth-child(1){
+    width: 100px;
     padding: 12px 6px;
     background: #f5f8f9;
+    text-align: center;
 }
+#board > .write > table td:nth-child(2) {
+   padding: 5px 10px;
+}
+
+
 #board table .title {
 border: none;
 padding-left: 5px;
@@ -368,17 +388,116 @@ width: 100%;
 height: 280px;
 resize: none;
 border: 0;
+padding: 10px;
 }
 #board table input{
 margin-left: 5px;
 }
-#board > .write > div {
+#board > .write div {
 margin-top: 10px;
 text-align: right;
 }
 
 /* 글보기 */
+#viewboard {
+    width: 720px;
+    height: auto;
+    margin: 60px auto;
+}
+#viewboard > .view > table {
+    width: 100%;
+}
+#viewboard > .view > caption{
+    float: left;
+}
+#viewboard > .view > table {
+    border-top: 2px solid #000;
+    margin-top: 10px;
+}
+#viewboard > .view > table td{
+    padding: 12px 6px;
+    border-bottom: 1px solid #e9e9e9 ;
+}
+#viewboard > .view > table td:nth-child(1){
+    width: 100px;
+    background: #f5f8f9;
+    text-align: center;
+}
+#viewboard > .view > table input {
+    border: none;
+}
+#viewboard > .view > table textarea{
+    width: 100%;
+    height: 280px;
+    resize: none;
+    border: 0;
+}
+#viewboard > .view > div {
+    text-align: right;
+    padding: 10px 0;
+}
+#viewboard > .commentList {
+   padding: 20px;
+   border: 1px solid #e3e3e3;
+   background: #f9f9f9;
+   margin-bottom: 16px;
+}
+#viewboard > .commentList > h3{
+    font-weight: bold;
+}
+#viewboard > .commentList > article {
+    border-top: 1px dotted #999;
+    margin-top: 10px;
+    padding-top: 10px;
+}    
+#viewboard > .commentList > article >textarea {
+    width: 100%;
+    height: 60px;
+    border: none;
+    padding: 6px;
+    box-sizing: border-box;
+    background: rgba(0,0,0,0);
+    resize: none;
+}
+#viewboard > .commentList > article > div {
+    text-align: right;
+}
+#viewboard > .commentList > .empty {
+    text-align: center;
+    padding: 20px 0;
+}
+#viewboard > .commentForm {
+    padding: 20px;
+    background: #f9f9f9;
+    border: 1px solid #e3e3e3;
+}
+#viewboard > .commentForm > h3 {
+    font-weight: bold;
+}
+#viewboard > .commentForm > form > textarea {
+    width: 100%;
+    height: 60px;
+    border: 1px solid #e4eaec;
+    resize: none;
+    background: #fff;
+    margin: 10px 0;    
+   
+}
+#viewboard > .commentForm > form > div {
+    text-align: right;
+}
 /* 글수정 */
+#board > .modify {
+    width: 720px;
+    height: auto;
+    margin: 60px auto;
+    overflow: hidden;
+}
+#board > .modify > div {
+    text-align: right;
+    margin-top: 10px;
+}
+
 
 /* 버튼 공통 마지막 취소 다음 */
 .btn {
@@ -388,7 +507,7 @@ text-align: right;
     text-align: center;
 }
 .btnCancel {background: #fdfdfd; border: 1px solid #bebebe; }
-.btnNext{ background-color: #e9e9e9; }
+.btnNext {background-color: #e9e9e9; }
 .btnRegister {width: 62px;}
-.btnWrite { border: 1px solid #3b3c3f; background: #4b545e; color: #fff;}
-
+.btnWrite {border: 1px solid #3b3c3f; background: #4b545e; color: #fff;}
+.btnModify {border: 1px solid #3b3c3f; background: #4b545e; color: #fff;}
