@@ -1,0 +1,387 @@
+/* 태그 초기화 */
+*{
+    margin: 0;
+    padding: 0;
+    font: normal 12px '돋움';
+    color: #111;
+    text-decoration: none;
+}
+ul, ol {
+    list-style: none;
+}
+
+#wrapper{
+    width: 100%;
+    height: auto;
+}
+/* header */
+header {
+    width: 100%;
+    height: 80px;
+    background-image: url('../img/header_bg.gif');
+}
+header > div {
+    position: relative;
+    width: 1000px;
+    height: 100%;
+    margin: 0 auto;
+}
+header > div > a > .logo {
+    margin-top: 6px;
+}
+header > div > .gnb {
+    float: right;
+    width: 620px;
+    height: 32px;
+    margin-top: 14px;
+    overflow: hidden;
+}
+header > div > .gnb > li {
+    float: left;
+    width: 20%;
+     height: 100%;
+    text-align: right;
+    box-sizing: border-box;
+}
+header > div > .gnb > li > a{
+    text-align: right;
+    line-height: 32px;
+    font-size: 17px;
+    font-weight: bolder;
+}
+header > div > .gnb > li > a:hover {
+    color: #7b231f;
+}
+header > div > .latest {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50%;
+    height: 30px;
+    box-sizing: border-box;
+}
+header > div > .latest > a {
+    display: inline-block;
+    color: #555;
+}
+header > div > .latest > a:nth-child(1){
+    position: relative;
+    top: 4px
+}
+header > div > .latest > a:nth-child(2){
+    position: relative;
+    top: -4px;
+    left: 6px;
+}
+header > div > .latest > a:nth-child(2):hover {
+    text-decoration: underline;
+}
+/* main */
+main {
+    width: 1000px;
+    height: auto;
+    margin: 5px auto;
+}
+main > div {
+    overflow: hidden;
+}
+main > div > div {
+    border: 1px solid #d7d7d7;
+    box-sizing: border-box;
+}
+main > div > .banner {
+    float: left;
+    width: 670px;
+    height: 320px;
+    background: url('../img/main_banner_bg.jpg') no-repeat;
+    overflow: hidden;
+}
+main > div > .banner > img {
+    margin-top: 100px;
+    margin-left: 160px;
+}
+main > div > .banner > ul {
+    float: right;
+    width: 80px;
+    height: 100%;
+    border-left: 1px solid #d7d7d7;
+}
+main > div > .banner > ul > img {
+    display: block;
+}
+main > div > .banner > ul > li {
+    width: 100%;
+    height: 41px;
+    border-top: 1px solid #d7d7d7;
+    box-sizing: border-box;
+}
+main > div > .banner > ul > li > a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+    font-size: 14px;
+    background-color: #f2f2f2;
+}
+main > div > .banner > ul > li > a:hover {
+    background: #fefefe;
+}
+main > div > .call {
+    position: relative;
+    float: right;
+    width: 326px;
+    height: 133px; 
+    background: #f2f2f2;
+}
+main > div > .call > img{
+    position: absolute;
+}
+main > div > .call > img:nth-child(1) {
+    left: 20px;
+    top: 20px;
+}
+main > div > .call > img:nth-child(2) {
+    left: 20px;
+    top: 46px;
+    z-index: 2;
+}
+main > div > .call > img:nth-child(3) {
+    left: 20px;
+    bottom: 20px;
+    z-index: 3;
+}
+main > div > .call > img:nth-child(4) {
+    right: 0%;
+    top: 0;
+    z-index: 1;
+}
+
+main > div > .qna {
+    float: right;
+    width: 326px;
+    height: 182px;
+    margin-top: 5px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+main > div > .qna > h3 {
+    font-size: 14px;
+    font-weight: bold;
+}
+main > div > .qna > table {
+    width: 100%;
+    height: auto;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-top: 6px;
+}
+main > div > .qna > table td {
+    color: #6a6a6a;
+}
+main > div > .qna > table td:nth-child(2){
+    display: inline-block;
+    width: 219px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: 20px; 
+}
+main > div > .qna > table td:nth-child(2):hover {
+    text-decoration: underline;
+}
+main > section{
+    overflow: hidden;
+}
+main > section > aside {
+    float: left;
+    width: 195px;
+    height: 760px;
+    margin-top: 5px;
+    border: 1px solid #d7d7d7;
+    box-sizing: border-box;
+}
+main > section > aside > .notice {
+    width: 100%;
+    height: 204px;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+main > section > aside > .notice > h3 {
+    font-size: 14px;
+    font-weight: bold;
+}
+main > section > aside > .notice > ul {
+    margin-top: 6px;
+}
+main > section > aside > .notice > ul > li {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 20px;
+}
+main > section > aside > .notice > ul > li > a:hover{
+    text-decoration: underline;
+}
+main > section > aside > .quick {
+    width: 100%;
+    height: 204px;
+    padding: 10px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+main > section > aside > .quick > h3 {
+    font-size: 14px;
+    font-weight: bold;
+}
+main > section > aside > .quick > a {
+    display: block;
+    width: 100%;
+    height: 34px;
+    border: 1px solid #d9d9d9;
+    margin-top: 6px;
+    font-size: 0%;
+    background-color: #f6f6f6;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+}
+main > section > aside > .quick > a:nth-of-type(1) {
+    background-image: url('../img/aside_quick_court.png');
+}
+main > section > aside > .quick > a:nth-of-type(2) {
+    background-image: url('../img/aside_quick_google.png');
+}
+main > section > aside > .quick > a:nth-of-type(3) {
+    background-image: url('../img/aside_quick_naver_map.png');
+}
+main > section > aside > .quick > a:nth-of-type(4) {
+    background-image: url('../img/aside_quick_naver_subway.png');
+}
+main > section > aside > .sell {
+    left: -1px;
+    position: relative;
+    display: block;
+    width: 195px;
+    height: 83px;
+    border: 1px solid #999;
+    margin-top: 6px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+main > section > aside > .sell > img:nth-child(1) {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+main > section > aside > .sell > img:nth-child(2) {
+    float: right;
+}
+main > section > aside > .buy {
+    left: -1px;
+    position: relative;
+    display: block;
+    width: 195px;
+    height: 83px;
+    border: 1px solid #999;
+    margin-top: 6px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+main > section > aside > .buy > img:nth-child(1) {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+main > section > aside > .buy > img:nth-child(2) {
+    float: right;
+}
+main > section > aside > .banner {
+    position: relative;
+    left: -1px;
+    width: 195px;
+    height: 167px;
+    border: 1px solid #999;
+    margin-top: 6px;
+    box-sizing: border-box;
+    overflow: hidden;
+    background-image: url(../img/aside_banner_bg.jpg);
+}
+main > section > aside > .banner > img:nth-child(1) {
+    float: right;
+}
+main > section > aside > .banner > img:nth-child(2) {
+    position: absolute;
+    top: 30px;
+    left: 10px;
+}
+main > section > aside > .banner > a > img {
+    position: absolute;
+    top: 60px;
+    left: 10px;
+}
+main > section > article {
+    float: right;
+    width: 800px;
+    height: 250px;
+    margin-top: 5px;
+    border: 1px solid #d7d7d7;
+    padding: 16px;
+    box-sizing: border-box;
+}
+main > section > article > h3 {
+    font-size: 14px;
+    font-weight: bold;
+}
+main > section > article > h3 > a {
+    float: right;
+}
+main > section > article > ul {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    margin-top: 26px;
+}
+main > section > article > ul > li {
+    float: left;
+    width: 20%;
+    height: 100%;
+}
+main > section > article > ul > li > img {
+    width: 150px;
+    height: 100px;
+}
+main > section > article > ul > li > a {
+    display: block;
+    text-align: center;
+}
+main > section > article > ul > li > a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+/* footer */
+footer {
+    width: 1000px;
+    height: 130px;
+    border: 1px solid #d7d7d7;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+footer > p {
+    font-size: 11.5px;
+    color: #585858;
+    line-height: 20px;
+    margin-left: 10px;
+}
+footer > p > span {
+    display: block;
+    margin-top: 6px;
+    font-weight: bold;
+}
