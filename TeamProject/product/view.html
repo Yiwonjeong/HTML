@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>udonmarket::main</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">   
+    <script>
+        $( document ).ready( function() {
+            $( '.slider' ).bxSlider( {
+            auto: true,
+            pause: 5000,
+            minSlides: 3,
+            slideWidth: 1376,
+            } );
+        } );
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Red Hat Display', 'Noto Sans KR', sans-serif;
+            font-size: 11px;
+            font-weight: 400;
+            box-sizing: border-box;
+        }
+        ul, ol {list-style: none;}
+        a {text-decoration: none; color: #000000;}
+        input, textarea {outline: none;}
+
+        #main {
+            width: 100%;
+            height: auto;
+            box-sizing: border-box;
+        }
+
+        main > #contents .blank1 {
+            height: 120px;
+        }
+        main > #contents .blank2 {
+            height: 24px;
+        }
+        main > #contents .blank3 {
+            height: 200px;
+        }
+
+        header {
+            width: 100%;
+            height: auto;
+            text-align: center;
+            position: fixed;
+            top: 0px;
+            width: 100%;
+            z-index: 10000;
+            background: #fff;
+            box-shadow: 0 10px 20px 0 rgb(0 0 0 / 5%);
+        }
+        header > .headerIn {
+            width: 90%;
+            height: 133px;
+            box-sizing: border-box;
+            display: inline-block;
+            position: relative;
+        }
+        header > .headerIn > .logo {    
+            width: 275px;
+            height: 38px;
+            position: absolute;
+            left: 0px;
+            top: 17px;
+            font-size: 30px;
+            font-weight: 800;
+        }
+        header > .headerIn > .lnb {
+            position: absolute;
+            top: 26px;
+            right: 9px;
+        }
+        header > .headerIn > .lnb > a {
+            margin-left: 40px;
+        }
+        header > .headerIn > .gnb {
+            position: absolute;
+            bottom: 20px;
+        }
+        header > .headerIn > .gnb a {
+            font-size: 17px;
+            text-align: left;
+            font-weight: 700;
+            margin-right: 33px;
+            display: inline-block;
+        }
+        header > .headerIn > .gnb a:hover {
+            color: #f2552c;
+        }
+        header > .headerIn > .gnb .cate_div {
+            font-size: 17px;
+            text-align: left;
+            font-weight: 700;
+            display: inline-block;
+        }
+        header > .headerIn > .gnb .categories {}
+        header > .headerIn > .gnb .cate_div:hover > .dropdown-cate {
+            display: block;
+        }
+        header > .headerIn > .gnb .dropdown-cate {
+            /* opacity: 0; */
+            /* visibility: hidden; */
+            display: none;
+            position: absolute;
+            transition: .15s;
+            transition: cubic-bezier(.17,.67,.86,.96);
+            box-shadow: 0 10px 20px -20px rgb(0 0 0 / 5%);
+            width: 1200px;
+            background: rgb(255,255,255,1);
+            z-index: 10001;
+            box-sizing: border-box;
+            text-align: left;
+            top: 48px;
+        }
+        header > .headerIn > .gnb .dropdown-cate > ul {
+            width: 25%;
+            float: left;
+            padding: 35px 2px 35px 13px;
+            box-sizing: border-box;
+        }
+        header > .headerIn > .gnb .dropdown-cate > ul > li {}
+        header > .headerIn > .gnb .dropdown-cate > ul > li > a {
+            line-height: 1.5em;
+            display: block;
+            padding: 0 0 0 8px;
+            text-align: left;
+            font-size: 20px;
+        }
+
+        header > .headerIn > .searchBar {
+            position: absolute;
+            bottom: 20px;
+            right: 9px;
+        }
+        header > .headerIn > .searchBar .search {
+            height: 26px;
+            width: 300px;
+            background: #f8f8f8;
+            border: 1px solid #f8f8f8;
+            border-radius: 35px;
+        }
+        header > .headerIn > .searchBar #search-box {
+            width: 250px;
+            font-size: 16px;
+            border: none;
+            background: transparent;
+        }
+        header > .headerIn > .searchBar .searchBtn {
+            border: none;
+            margin-left: 5px;
+            padding-top: 4px;
+            background: transparent;
+        }
+
+        main {
+            width: 100%;
+            height: auto;
+            text-align: center;
+            margin-top: 135px;
+        }
+        main > #contents {
+            width: 90%;
+            box-sizing: border-box;
+            display: inline-block;
+        }
+        main > #contents .WEEKLY_BEST {
+        }
+        main > #contents .WEEKLY_BEST > nav {}
+        main > #contents .WEEKLY_BEST > nav > p {
+            font-size: 17px;
+            font-weight: 500;
+            text-align: left;
+        }
+        main > #contents .WEEKLY_BEST > nav > p > span {
+            font-size: 17px;
+            font-weight: 500;
+        }
+        main > #contents .WEEKLY_BEST > nav > p > strong {
+            font-size: 17px;
+            font-weight: 500;
+            color: #f2552c;
+        }
+        main > #contents .WEEKLY_BEST > .shortProd {
+            margin-top: 30px;
+            display: flex;
+        }
+        main > #contents .WEEKLY_BEST > .shortProd > .sp_left {
+            display: inline-block;
+            width: 45%;
+        }
+        main > #contents .WEEKLY_BEST > .shortProd > .sp_left > img {
+            width: 530px;
+            height: 530px;
+        }
+        main > #contents .WEEKLY_BEST > .shortProd > .sp_right {
+            display: inline-block;
+            width: 50%;
+            padding: 20px 10px 20px 30px;
+        }
+        main > #contents .WEEKLY_BEST > .shortProd > .sp_right > .sp_right_info {
+            position: relative;
+        }
+        main > #contents .WEEKLY_BEST > .shortProd > .sp_right > .sp_right_info > .sp_tit {
+            font-size: 26px;
+            width: 79%;
+            font-weight: 500;
+            top: 0;
+            text-align: left;
+        }
+        main > #contents .WEEKLY_BEST > .shortProd > .sp_right > .sp_right_info > .status {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        main > #contents .WEEKLY_BEST > .shortProd > .sp_right > .sp_right_info > .status > .status-percent {
+            font-size: 20px;
+            color: #f2552c;
+            font-weight: 800;
+        }
+        main > #contents .WEEKLY_BEST > .shortProd > .sp_right > .sp_right_info > .status > .status-percent::after{
+            content: "%";
+        }
+        main > #contents .WEEKLY_BEST > .shortProd > .sp_right > .sp_right_info > .status > .status-day {
+            font-size: 20px;
+            margin-left: 5px;
+        }
+        main > #contents .WEEKLY_BEST > .shortProd > .sp_right > .sp_right_info > .underline {
+            margin: 22px 0;
+            font-size: 0;
+            border-bottom: 1px solid #e8e8e8;
+        }
+        main > #contents .WEEKLY_BEST > .shortProd > .sp_right > .sp_right_info > p {
+            font-size: 19px;
+            text-align: left;
+            font-weight: 400;
+        }
+        main > #contents .WEEKLY_BEST > .shortProd > .sp_right > .sp_right_info > table {
+            width: 100%;
+            margin-top: 23px;
+        }
+        main > #contents .WEEKLY_BEST > .shortProd > .sp_right > .sp_right_info > table th {
+            font-size: 18px;
+            text-align: left;
+            width: 30%;
+        }
+        main > #contents .WEEKLY_BEST > .shortProd > .sp_right > .sp_right_info > table td {
+            font-size: 18px;
+            text-align: left;
+        }
+        main > #contents .WEEKLY_BEST > .shortProd > .sp_right > .sp_right_info > table .oriPrice {
+            text-decoration: line-through;
+        }
+        main > #contents .WEEKLY_BEST > .shortProd > .sp_right > .sp_right_info > table .freeDelivery {
+            color: #f2552c;
+            font-weight: 600;
+        }
+        main > #contents .WEEKLY_BEST > .shortProd > .sp_right > .sp_right_info > table td > span {
+            font-size: 16px;
+            margin-left: 6px;
+        }
+        main > #contents .WEEKLY_BEST > .shortProd > .sp_right > .sp_right_info > .count {
+            margin: 30px 0;
+            text-align: right;
+        }
+        main > #contents .WEEKLY_BEST > .shortProd > .sp_right > .sp_right_info > .count > .decrease {
+            width: 28px;
+            height: 28px;   
+            background: url(/TeamProject/img/btn_minus.png) 50% 50% no-repeat;
+            border: 1px solid #bbb;
+            box-sizing: border-box;
+            overflow: hidden;
+            text-align: -100px;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+        main > #contents .WEEKLY_BEST > .shortProd > .sp_right > .sp_right_info > .count > .increase {
+            width: 28px;
+            height: 28px;   
+            background: url(/TeamProject/img/btn_plus.png) 50% 50% no-repeat;
+            border: 1px solid #bbb;
+            box-sizing: border-box;
+            overflow: hidden;
+            text-align: -100px;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+        main > #contents .WEEKLY_BEST > .shortProd > .sp_right > .sp_right_info > .count > input {
+            font-size: 19px;
+            width: 40px;
+            padding: 0 0 0 15px;
+            vertical-align: middle;
+            border: 1px solid #bbb;
+        }
+        main > #contents .WEEKLY_BEST > .shortProd > .sp_right > .sp_right_info > .total {
+            font-size: 17px;
+            text-align: right;
+            font-weight: 500;
+        }
+        main > #contents .WEEKLY_BEST > .shortProd > .sp_right > .sp_right_info > .total > span {
+            font-size: 20px;
+            font-weight: 400;
+            margin-left: 5px;
+        }
+        main > #contents .WEEKLY_BEST > .shortProd > .sp_right > .sp_right_info > .total i {
+            color: #f2552c;
+            font-size: 33px;
+            font-weight: 800;
+            font-style: normal;
+        }
+        main > #contents .WEEKLY_BEST > .shortProd > .sp_right > .sp_right_info > .orderMenu {
+            width: 100%;
+            margin-top: 50px;
+        }
+        main > #contents .WEEKLY_BEST > .shortProd > .sp_right > .sp_right_info > .orderMenu > div {
+            width: 45%;
+            border: 1px solid red;
+            display: inline-block;
+            padding: 6px;
+            cursor: pointer;
+        }
+        main > #contents .WEEKLY_BEST > .shortProd > .sp_right > .sp_right_info > .orderMenu  > .btnWish {
+            border: 1px solid #ddd;
+            background: #fff;
+            color: #727272;
+        }
+        main > #contents .WEEKLY_BEST > .shortProd > .sp_right > .sp_right_info > .orderMenu span {
+            font-size: 19px;
+        }
+        main > #contents .WEEKLY_BEST > .shortProd > .sp_right > .sp_right_info > .orderMenu  > .btnOrder {
+            border: 1px solid #f2552c;
+            background: #f2552c;
+        }
+        main > #contents .WEEKLY_BEST > .shortProd > .sp_right > .sp_right_info > .orderMenu  > .btnOrder > span {
+            color: #fff;
+        }
+        /* 상품 디테일 */
+        main > #contents .detailProd {
+        }
+        main > #contents .detailProd li {
+            font-size: 15px;
+            display: inline-block;
+            border: 1px solid #e8e8e8;
+            padding: 7px 38px;
+            cursor: pointer;
+        }
+        main > #contents .detailProd2 {
+            background: #e8e8e8;
+            width: 80%;
+            display: inline-block;
+            margin-top: 100px;
+            height: 500px; /* 이미지가 없어서 우선 높이값 부여 */
+        }
+        main > #contents .detailProd2 > img {}
+        main > #contents .prodReview {
+            margin-top: 100px;
+        }
+        main > #contents .prodReview > h3 {
+            font-size: 20px;
+            font-weight: 500;
+        }
+        main > #contents .prodReview > table {
+            margin-top: 11px;
+            width: 100%;
+        }
+        main > #contents .prodReview > table th {
+            border: 1px solid #e8e8e8;
+            border-left: none;
+            border-right: none;
+            vertical-align: middle;
+            font-size: 14px;
+            background: #fbfafa;
+            padding: 10px 0;
+        }
+        main > #contents .prodReview > table th:nth-of-type(1) {
+            width: 7%;
+        }
+        main > #contents .prodReview > table th:nth-of-type(2) {
+        }
+        main > #contents .prodReview > table th:nth-of-type(3) {
+            width: 17%;
+        }
+        main > #contents .prodReview > table th:nth-of-type(4) {
+            width: 17%;
+        }
+        main > #contents .prodReview > table td {
+            padding: 10px 0;
+            border-bottom: 1px solid #e8e8e8;
+        }
+        main > #contents .prodReview > table td > div {
+            font-size: 15px;
+        }
+        main > #contents .prodReview > table .reviewNum {}
+        main > #contents .prodReview > table .reviewNum > div {
+            width: 70%;
+            display: inline-block;
+        }
+        main > #contents .prodReview > table .reviewContent {
+            text-align: left;
+            padding-left: 14px;
+        }
+        main > #contents .prodReview > table .reviewContent > div {
+            display: inline-block;
+        }
+        main > #contents .prodReview > table .reviewContent > div > span {
+            border-radius: 6px;
+            background: #393939;
+            font-size: 11px;
+            color: #fff;
+            font-weight: 500;
+            padding: 1px 3px;
+            border-radius: 11px;
+        }
+        main > #contents .prodReview > table .reviewScore > img {
+            vertical-align: middle;
+        }
+        main > #contents .prodReview .paging {
+            width: 35%;
+            display: inline-block;
+            margin-top: 32px;
+        }
+        main > #contents .prodReview .paging > span {}
+        main > #contents .prodReview .paging > span > a {
+            font-size: 16px;
+            vertical-align: middle;
+            margin: 0px 8px;
+            font-weight: 200;
+        }
+        main > #contents .prodReview .paging > span > .on {
+            font-weight: 800;
+            text-decoration: underline;
+        }
+        main > #contents .prodReview .paging > span img {
+            padding-top: 4px;
+        }
+        main > #contents .prodQna {
+            margin-top: 100px;
+        }
+        main > #contents .prodQna > h3 {
+            font-size: 20px;
+            font-weight: 500;
+        }
+        main > #contents .co_list {
+            margin-top: 23px;
+            max-height: 450px;
+            margin-bottom: 24px;
+            overflow-y: auto;
+        }
+        main > #contents .co_item {
+            margin-bottom: 24px;
+        }
+        main > #contents .co_img {
+            float: left;
+        }
+        main > #contents .co_img > img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+        }
+        main > #contents .area_txt {
+            text-align: left;
+            margin-left: 43px;
+            max-width: 84%;
+        }
+        main > #contents .area_txt > span {
+            font-size: 11px;
+            font-weight: 400;
+        }
+        main > #contents .area_txt > p {
+            font-size: 13px;
+            font-weight: 400;
+        }
+        main > #contents .re_item {
+            margin-left: 43px;
+        }
+        main > #contents .re_item > li {
+            overflow: hidden;
+        }
+        main > #contents .re_item2 {
+            margin-top: 12px;
+            border: 1px solid #f5f5f5;
+            background: #f5f5f5;
+            overflow: visible;
+            border-radius: 4px;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        main > #contents .re_item2 > .area_img  {
+            display: inline-block;
+        }
+        main > #contents .re_item2 > .area_img > img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+        }
+        main > #contents .area_txt_re {
+            display: inline-block;
+            margin-left: 8px;
+        }
+        main > #contents .area_txt_re > span {
+            font-size: 11px;
+            font-weight: 400;
+        }
+        main > #contents .area_txt_re > p {
+            font-size: 13px;
+            font-weight: 400;
+        }
+        main > #contents .co_write {
+            padding: 16px 0;
+            border-top: 1px solid #d9d9d9;
+        }
+        main > #contents .co_write > .co_write_inner {
+            height: 32px;
+            position: relative;
+        }
+        main > #contents .co_inner_img {
+            text-align: left;
+        }
+        main > #contents .co_inner_img > img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+        }
+        main > #contents .co_inner_txt {
+            position: absolute;
+            top: 7px;
+            left: 40px;
+        }
+        main > #contents .co_inner_txt > label {
+            border: 1px solid #dcdee0;
+            padding: 8px 10px;
+        }
+        main > #contents .co_inner_txt > label > input {
+            font-size: 12px;
+            width: 1100px;
+            border: none;
+        }
+        main > #contents .btnComment {
+            position: absolute;
+            top: -1px;
+            right: 84px;
+            width: 56px;
+            height: 32px;
+            background: #f2552c;
+            border: 1px solid #f2552c;
+            color: #fff;
+            font-size: 12px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+
+
+
+
+
+
+
+        footer {
+            width: 100%;
+            height: auto;
+            text-align: center;
+            background: #000;
+        }
+        footer > .footerIn {
+            width: 90%;
+            height: auto;
+            box-sizing: border-box;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        footer > .footerIn > .f_menu {
+            margin-top: 30px;
+            position: relative;
+        }
+        footer > .footerIn > .f_menu a {
+            color: #fff;
+            font-size: 18px;
+            margin-right: 50px;
+        }
+        footer > .footerIn > .f_menu .sns {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        footer > .footerIn > .f_menu .sns > a {
+            margin: 0 0 0 20px;
+        }
+        footer > .footerIn > .f_menu .sns > a > img {
+            width: 26px;
+        }
+        footer > .footerIn > .f_menu .sns > a:nth-of-type(3) > img {
+            width: 33px;
+        }
+        footer > .footerIn .f_block {
+            display: flex;
+        }
+        footer > .footerIn .f_block1 {
+            margin-top: 30px;
+            width: 60%;
+        }
+        footer > .footerIn .f_block1 > .f_info {
+            text-align: left;
+        }
+        footer > .footerIn .f_block1 > .f_info > h4 {
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        footer > .footerIn .f_block1 > .f_info > li {
+            color: #fff;
+            margin-bottom: 3px;
+        }
+        footer > .footerIn .f_block1 > .f_info > li > i {
+            font-style: normal;
+            font-weight: 600;
+            font-size: 11px;
+            color: #999;
+        }
+        footer > .footerIn .f_block1 > .f_info > .copyright {
+            font-size: 12px;
+        }
+        footer > .footerIn .f_block2 {
+            margin-top: 30px;
+            width: 40%;
+            color: #fff;
+        }
+        footer > .footerIn .f_block2 > .f_cs {
+            text-align: left;
+        }
+        footer > .footerIn .f_block2 > .f_cs > h4 {
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        footer > .footerIn .f_block2 > .f_cs > li {
+            color: #fff;
+            margin-bottom: 3px;
+        }
+        footer > .footerIn .f_block2 > .f_cs > .cs_tel {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        footer > .footerIn .f_terms {
+            margin-top: 100px;
+            position: relative;
+        }
+        footer > .footerIn .f_terms > .terms {}
+        footer > .footerIn .f_terms > .terms > li {
+            display: inline-block;
+            margin: 0 30px;
+            color: #fff;
+        }
+        footer > .footerIn .f_terms > .terms > li > a {
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <header>
+            <div class="headerIn">
+                <section class="logo">AROUND MARKET</section>
+                <section class="lnb">
+                    <a href="#">LOGIN</a>
+                    <a href="#">JOIN US</a>
+                    <a href="#">ORDER</a>
+                    <a href="#">MY PAGE</a>
+                    <a href="#">HEART</a>
+                    <a href="#">COMMUNITY</a>
+                </section>
+                <div class="gnb">
+                    <table>
+                        <tr>
+                            <div class="cate_div">
+                                <a class="categories" href="#">카테고리</a>
+                                <div class="dropdown-cate">
+                                    <ul>
+                                        <li><a href="#">의류</a></li>
+                                        <li><a href="#">패션잡화</a></li>
+                                        <li><a href="#">뷰티</a></li>
+                                        <li><a href="#">출산/유아동</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="#">식품</a></li>
+                                        <li><a href="#">생활용품</a></li>
+                                        <li><a href="#">홈인테리어</a></li>
+                                        <li><a href="#">가전디지털</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="#">스포츠/레저</a></li>
+                                        <li><a href="#">자동차용품</a></li>
+                                        <li><a href="#">도서/음반/DVD</a></li>
+                                        <li><a href="#">완구/취미</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="#">문구/오피스</a></li>
+                                        <li><a href="#">반려동물용품</a></li>
+                                        <li><a href="#">헬스/건강식품</a></li>
+                                        <li><a href="#">티켓</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="#">인기</a>
+                            <a href="#">추천</a>
+                            <a href="#">신규</a>
+                            <a href="#">공구요청</a>
+                        </tr>
+                    </table>
+                </div>
+                <div class="searchBar">
+                    <form class="search-container" action="#">
+                        <div class="search">
+                            <input id="search-box" type="text" class="search-box" name="q"/>
+                            <button type="submit" class="searchBtn">
+                                <input type="image" src="../img/btn_search.png" id="search-submit"/>
+                            </button>
+                            
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div id="contents">
+                <div class="blank2"></div>
+                <div class="WEEKLY_BEST">
+                    <nav>
+                        <p>
+                            HOME&nbsp;> 
+                            <span>카테고리1</span>
+                            &nbsp;>&nbsp;
+                            <strong>카테고리2</strong>
+                        </p>
+                    </nav>
+                    <div class="shortProd">
+                        <div class="sp_left">
+                            <img src="../img/grid-img-ex7.jpg" alt="썸네일">
+                        </div>
+                        <div class="sp_right">
+                            <div class="sp_right_info">
+                                <div class="sp_tit">신선한 채소+과일 수제간식 펫큐브</div>
+                                <div class="status">
+                                    <span class="status-percent">51</span>
+                                    <span class="status-day">13:43:23</span>
+                                </div>
+                                <div class="underline">구분선 표기</div>
+                                <p>100% 주문 이후 제작, 안심하고 먹을 수 있는 우리 강아지 간식</p>
+                                <table border="0">
+                                    <tr>
+                                        <th>판매가</th>
+                                        <td class="oriPrice">43,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <th>할인판매가</th>
+                                        <td>21,200원
+                                            <span>(21,800원 할인)</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>적립금</th>
+                                        <td>212원 (1%)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>배송비</th>
+                                        <!-- 배송비 무료일 때만 color: #f2552c 적용 -->
+                                        <td class="freeDelivery">무료</td>
+                                    </tr>
+                                </table>
+                                <div class="count">
+                                    <button class="decrease">-</button>
+                                    <input type="text" name="num" value="1" readonly>
+                                    <button class="increase">+</button>
+                                </div>
+                                <div class="total">TOTAL
+                                    <span><i>21,000</i>원</span>
+                                </div>
+                                <div class="orderMenu">
+                                    <div class="btnWish">
+                                        <span>위시리스트</span>
+                                    </div>
+                                    <div class="btnOrder">
+                                        <span>구매하기</span>
+                                    </div>
+                                </d>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="blank3"></div>
+                <div class="detailProd">
+                    <ul>
+                        <li>상세설명</li>
+                        <li>상품후기 (23)</li>
+                        <li>문의 (4)</li>
+                    </ul>
+                    <div class="detailProd2">
+                        <img src="#" alt="상품 이미지">
+                    </div>
+                    <div class="detailProd2">
+                        <img src="#" alt="상품 상세정보">
+                    </div>
+                </div>
+                <div class="prodReview">
+                    <h3>상품후기</h3>
+                    <table>
+                        <tr>
+                            <th>번호</th>
+                            <th>후기</th>
+                            <th>평가</th>
+                            <th>작성자</th>
+                        </tr>
+                        <tr>
+                            <td class="reviewNum">
+                                <div>1</div>
+                            </td>
+                            <td class="reviewContent">
+                                <div>우리 집 막내 초코가 젤 좋아해요!</div>
+                                <div><span>PHOTO</span></div>
+                            </td>
+                            <td>
+                                <div class="reviewScore">
+                                    <img src="../img/icon_review_star.gif" alt="star">
+                                    <img src="../img/icon_review_star.gif" alt="star">
+                                    <img src="../img/icon_review_star.gif" alt="star">
+                                    <img src="../img/icon_review_star.gif" alt="star">
+                                </div>
+                            </td>
+                            <td><div>cir**</div></td>
+                        </tr>
+                        <tr>
+                            <td class="reviewNum">
+                                <div>2</div>
+                            </td>
+                            <td class="reviewContent">
+                                <div>종류가 다양해서 좋습니다.</div>
+                                <div><span>PHOTO</span></div>
+                            </td>
+                            <td>
+                                <div class="reviewScore">
+                                    <img src="../img/icon_review_star.gif" alt="star">
+                                    <img src="../img/icon_review_star.gif" alt="star">
+                                    <img src="../img/icon_review_star.gif" alt="star">
+                                    <img src="../img/icon_review_star.gif" alt="star">
+                                </div>
+                            </td>
+                            <td><div>cir**</div></td>
+                        </tr>
+                        <tr>
+                            <td class="reviewNum">
+                                <div>3</div>
+                            </td>
+                            <td class="reviewContent">
+                                <div>안전하게 먹일 수 있는 성분이라 만족</div>
+                            </td>
+                            <td>
+                                <div class="reviewScore">
+                                    <img src="../img/icon_review_star.gif" alt="star">
+                                    <img src="../img/icon_review_star.gif" alt="star">
+                                    <img src="../img/icon_review_star.gif" alt="star">
+                                    <img src="../img/icon_review_star.gif" alt="star">
+                                    <img src="../img/icon_review_star.gif" alt="star">
+                                </div>
+                            </td>
+                            <td><div>cir**</div></td>
+                        </tr>
+                    </table>
+                    <div class="paging">
+                        <span class="prev">
+                            <a href="#"><img src="../img/btn_page_prev.gif" alt="이전 페이지"></a>
+                        </span>
+                        <span class="num">
+                            <a class="on" href="#">1</a>
+                            <a href="#">2</a>
+                            <a href="#">3</a>
+                            <a href="#">4</a>
+                        </span>
+                        <span class="next">
+                            <a href="#"><img src="../img/btn_page_next.gif" alt="다음 페이지"></a>
+                        </span>
+                    </div>
+                </div>
+                <div class="prodQna">
+                    <h3>QNA 문의</h3>
+                        <ul class="co_list">
+                            <!-- co_item 반복 -->
+                            <li class="co_item"> 
+                                <div class="co_img">
+                                    <img src="../img/user_img3.jpeg" alt="">
+                                </div>
+                                <div class="area_txt">
+                                    <span>이동*</span>
+                                    <p>냉장 보관인가요? 실온 보관인가요?</p>
+                                </div>
+                                <ul class="re_item">
+                                    <li>
+                                        <div class="re_item2">
+                                            <div class="area_img">
+                                                <img src="../img/user_img2.jpeg" alt="">
+                                            </div>
+                                            <div class="area_txt_re">
+                                                <span><img src="../img/icon-seller.svg" alt="판매자">베리베리</span>
+                                                <p>햇빛이 들지 않는 실온에 보관해 주세요. 감사합니다 ^^</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="co_item"> 
+                                <div class="co_img">
+                                    <img src="../img/user_img3.jpeg" alt="">
+                                </div>
+                                <div class="area_txt">
+                                    <span>이동*</span>
+                                    <p>냉장 보관인가요? 실온 보관인가요?</p>
+                                </div>
+                                <ul class="re_item">
+                                    <li>
+                                        <div class="re_item2">
+                                            <div class="area_img">
+                                                <img src="../img/user_img2.jpeg" alt="">
+                                            </div>
+                                            <div class="area_txt_re">
+                                                <span><img src="../img/icon-seller.svg" alt="판매자">베리베리</span>
+                                                <p>햇빛이 들지 않는 실온에 보관해 주세요. 감사합니다 ^^</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="co_item"> 
+                                <div class="co_img">
+                                    <img src="../img/user_img3.jpeg" alt="">
+                                </div>
+                                <div class="area_txt">
+                                    <span>이동*</span>
+                                    <p>냉장 보관인가요? 실온 보관인가요?</p>
+                                </div>
+                                <ul class="re_item">
+                                    <li>
+                                        <div class="re_item2">
+                                            <div class="area_img">
+                                                <img src="../img/user_img2.jpeg" alt="">
+                                            </div>
+                                            <div class="area_txt_re">
+                                                <span><img src="../img/icon-seller.svg" alt="판매자">베리베리</span>
+                                                <p>햇빛이 들지 않는 실온에 보관해 주세요. 감사합니다 ^^</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="co_item"> 
+                                <div class="co_img">
+                                    <img src="../img/user_img3.jpeg" alt="">
+                                </div>
+                                <div class="area_txt">
+                                    <span>이동*</span>
+                                    <p>냉장 보관인가요? 실온 보관인가요?</p>
+                                </div>
+                                <ul class="re_item">
+                                    <li>
+                                        <div class="re_item2">
+                                            <div class="area_img">
+                                                <img src="../img/user_img2.jpeg" alt="">
+                                            </div>
+                                            <div class="area_txt_re">
+                                                <span><img src="../img/icon-seller.svg" alt="판매자">베리베리</span>
+                                                <p>햇빛이 들지 않는 실온에 보관해 주세요. 감사합니다 ^^</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="co_item"> 
+                                <div class="co_img">
+                                    <img src="../img/user_img3.jpeg" alt="">
+                                </div>
+                                <div class="area_txt">
+                                    <span>이동*</span>
+                                    <p>냉장 보관인가요? 실온 보관인가요?</p>
+                                </div>
+                                <ul class="re_item">
+                                    <li>
+                                        <div class="re_item2">
+                                            <div class="area_img">
+                                                <img src="../img/user_img2.jpeg" alt="">
+                                            </div>
+                                            <div class="area_txt_re">
+                                                <span><img src="../img/icon-seller.svg" alt="판매자">베리베리</span>
+                                                <p>햇빛이 들지 않는 실온에 보관해 주세요. 감사합니다 ^^</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <form class="co_write" action="#">
+                            <div class="co_write_inner">
+                                <div class="co_inner_img">
+                                    <img src="../img/user_img1.jpeg" alt="">
+                                </div>
+                                <div class="co_inner_txt">
+                                    <label>
+                                        <input type="text" placeholder="문의 댓글을 남겨주세요." autocomplete="off">
+                                    </label>
+                                </div>
+                                <button type="button" class="btnComment">등록</button>
+                            </div>
+                        </form>
+                </div>
+                <div class="blank1"></div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footerIn">
+                <div class="f_menu">
+                    <table>
+                        <tr>
+                            <td><a href="#">ABOUT</a></td>
+                            <td><a href="#">NOTICE</a></td>
+                            <td><a href="#">CS CENTER</a></td>
+                        </tr>
+                    </table>
+                    <div class="sns">
+                        <a href="#"><img src="../img/instagram.png" alt="인스타그램"></a>
+                        <a href="#"><img src="../img/facebook.png" alt="페이스북"></a>
+                        <a href="#"><img src="../img/youtube.png" alt="유튜브"></a>
+                    </div>
+                </div>
+                <div class="f_block">
+                    <div class="f_block1">
+                        <ul class="f_info">
+                            <h4>INFORMATION</h4>
+                            <li><i>company.</i>&nbsp;&nbsp;주식회사 우동친구</li>
+                            <li><i>owner.</i>&nbsp;&nbsp;김우동</li>
+                            <li><i>email.</i>&nbsp;&nbsp;udonmarket@gmail.com</li>
+                            <li><i>corporate registration num.</i>&nbsp;&nbsp;123-45-67890</li>
+                            <li><i>online license.</i>&nbsp;&nbsp;제 2023-우동구-0123호</li>
+                            <li><i>address.</i>&nbsp;&nbsp;부산광역시 수영구 299 루미너스 빌딩 10층</li>
+                            <br>
+                            <li class="copyright">copyright© udonmarket All rights reserved.</li>
+                            </ul>
+                    </div>
+                    <div class="f_block2">
+                        <ul class="f_cs">
+                            <h4>C/S CENTER</h4>
+                            <li class="cs_tel">070-1234-1234</li>
+                            <li>MON - FRI AM 09:00 - PM 17:00</li>
+                            <li>BREAK PM 12:00 - PM 13:00</li>
+                            <li>SAT, SUN, HOLIDAY
+                                <span style="color:#ce5c5c">closed</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="f_terms">
+                    <ul class="terms">
+                        <li><a href="#">ABOUT US</a></li>
+                        <li>|</li>
+                        <li><a href="#">TERMS</a></li>
+                        <li>|</li>
+                        <li><a href="#">FINANCE POLICY</a></li>
+                        <li>|</li>
+                        <li><a href="#">LOCATION POLICY</a></li>
+                        <li>|</li>
+                        <li><a href="#">PRIVACY POLICY</a></li>
+                        <li>|</li>
+                        <li><a href="#">SHOPPING GUIDE</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

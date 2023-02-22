@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>udonmarket::main</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">   
+    <script>
+        $( document ).ready( function() {
+            $( '.slider' ).bxSlider( {
+            auto: true,
+            pause: 5000,
+            minSlides: 3,
+            slideWidth: 1376,
+            } );
+        } );
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Red Hat Display', 'Noto Sans KR', sans-serif;
+            font-size: 11px;
+            font-weight: 400;
+            box-sizing: border-box;
+        }
+        ul, ol {list-style: none;}
+        a {text-decoration: none; color: #000000;}
+        input, textarea {outline: none;}
+
+        #main {
+            width: 100%;
+            height: auto;
+            box-sizing: border-box;
+        }
+
+        main > #contents .blank1 {
+            height: 120px;
+        }
+        main > #contents .blank2 {
+            height: 24px;
+        }
+        main > #contents .blank3 {
+            height: 200px;
+        }
+        main > #contents .blank50 {
+            height: 50px;
+        }
+
+        header {
+            width: 100%;
+            height: auto;
+            text-align: center;
+            position: fixed;
+            top: 0px;
+            width: 100%;
+            z-index: 10000;
+            background: #fff;
+            box-shadow: 0 10px 20px 0 rgb(0 0 0 / 5%);
+        }
+        header > .headerIn {
+            width: 90%;
+            height: 133px;
+            box-sizing: border-box;
+            display: inline-block;
+            position: relative;
+        }
+        header > .headerIn > .logo {    
+            width: 275px;
+            height: 38px;
+            position: absolute;
+            left: 0px;
+            top: 17px;
+            font-size: 30px;
+            font-weight: 800;
+        }
+        header > .headerIn > .lnb {
+            position: absolute;
+            top: 26px;
+            right: 9px;
+        }
+        header > .headerIn > .lnb > a {
+            margin-left: 40px;
+        }
+        header > .headerIn > .gnb {
+            position: absolute;
+            bottom: 20px;
+        }
+        header > .headerIn > .gnb a {
+            font-size: 17px;
+            text-align: left;
+            font-weight: 700;
+            margin-right: 33px;
+            display: inline-block;
+        }
+        header > .headerIn > .gnb a:hover {
+            color: #f2552c;
+        }
+        header > .headerIn > .gnb .cate_div {
+            font-size: 17px;
+            text-align: left;
+            font-weight: 700;
+            display: inline-block;
+        }
+        header > .headerIn > .gnb .categories {}
+        header > .headerIn > .gnb .cate_div:hover > .dropdown-cate {
+            display: block;
+        }
+        header > .headerIn > .gnb .dropdown-cate {
+            /* opacity: 0; */
+            /* visibility: hidden; */
+            display: none;
+            position: absolute;
+            transition: .15s;
+            transition: cubic-bezier(.17,.67,.86,.96);
+            box-shadow: 0 10px 20px -20px rgb(0 0 0 / 5%);
+            width: 1200px;
+            background: rgb(255,255,255,1);
+            z-index: 10001;
+            box-sizing: border-box;
+            text-align: left;
+            top: 48px;
+        }
+        header > .headerIn > .gnb .dropdown-cate > ul {
+            width: 25%;
+            float: left;
+            padding: 35px 2px 35px 13px;
+            box-sizing: border-box;
+        }
+        header > .headerIn > .gnb .dropdown-cate > ul > li {}
+        header > .headerIn > .gnb .dropdown-cate > ul > li > a {
+            line-height: 1.5em;
+            display: block;
+            padding: 0 0 0 8px;
+            text-align: left;
+            font-size: 20px;
+        }
+
+        header > .headerIn > .searchBar {
+            position: absolute;
+            bottom: 20px;
+            right: 9px;
+        }
+        header > .headerIn > .searchBar .search {
+            height: 26px;
+            width: 300px;
+            background: #f8f8f8;
+            border: 1px solid #f8f8f8;
+            border-radius: 35px;
+        }
+        header > .headerIn > .searchBar #search-box {
+            width: 250px;
+            font-size: 16px;
+            border: none;
+            background: transparent;
+        }
+        header > .headerIn > .searchBar .searchBtn {
+            border: none;
+            margin-left: 5px;
+            padding-top: 4px;
+            background: transparent;
+        }
+
+        main {
+            width: 100%;
+            height: auto;
+            text-align: center;
+            margin-top: 135px;
+        }
+        main > #contents {
+            width: 90%;
+            box-sizing: border-box;
+            display: inline-block;
+            height: 1500px;
+        }
+        main > #contents .WEEKLY_BEST {
+            width: 100%;
+            border: 1px solid #fff;
+            position: relative;
+        }
+        main > #contents .WEEKLY_BEST > .mylnb {
+            padding: 10px 0 10px 14px;
+            width: 262px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        main > #contents .WEEKLY_BEST > .mylnb > h2 {
+            font-size: 20px;
+            text-align: left;
+            font-weight: 700;
+            padding-bottom: 30px;
+        }
+        main > #contents .WEEKLY_BEST > .mylnb li {
+            text-align: left;
+            padding: 7px 0;
+        }
+        main > #contents .WEEKLY_BEST > .mylnb .mylab_tit {
+            border-bottom: 1px solid #eee;
+            margin: 24px 0 4px 0;
+        }
+        main > #contents .WEEKLY_BEST > .mylnb .mylab_tit > a {
+            font-size: 20px;
+            color: #000;
+        }
+        main > #contents .WEEKLY_BEST > .mylnb li > a {
+            font-size: 15px;
+            color: #4d4d4d;
+            font-weight: 400;
+        }
+        main > #contents .WEEKLY_BEST > .myContent {
+            box-sizing: border-box;
+            display: inline-block;
+            padding: 10px;
+            width: 984.45px;
+            position: absolute;
+            right: 32px;
+            top: 22px;
+        }
+        main > #contents .WEEKLY_BEST > .myContent > div {
+        }
+        main > #contents .WEEKLY_BEST > .myContent .my_tab {
+            width: 100%;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.3;
+            margin: 50px 0;
+        }
+        main > #contents .WEEKLY_BEST > .myContent .my_tab > ul {
+            display: table;
+        }
+        main > #contents .WEEKLY_BEST > .myContent .my_tab .on {
+            border: 1px solid #666;
+            border-bottom: 1px solid #fff;
+            background: #fff;
+        }
+        main > #contents .WEEKLY_BEST > .myContent .my_tab  li {
+            width: 164px;
+            display: table-cell;
+            text-align: center;
+            vertical-align: middle;
+            padding: 11px 0;
+        }
+        main > #contents .WEEKLY_BEST > .myContent .my_tab  .off {
+            border: 1px solid #ddd;
+            border-bottom-color: #666;
+            background: #f4f4f4;
+        }
+        main > #contents .WEEKLY_BEST > .myContent .my_tab  li:nth-of-type(3) {
+            width: 600px;
+            border-bottom: 1px solid #666;
+        }
+        main > #contents .WEEKLY_BEST > .myContent .my_tab  a {
+            font-size: 15px;
+            color: #333333;
+            vertical-align: middle;
+            line-height: 20px;
+        }
+        main > #contents .WEEKLY_BEST > .myContent > div > h1 {
+            color: #424242;
+            font-size: 32px;
+            text-align: left;
+            font-weight: 500;
+            margin: 40px 0;
+        }
+        main > #contents .WEEKLY_BEST > .myContent .pv_1 {
+            display: flex;
+            flex-wrap: wrap;
+            box-sizing: border-box;
+        }
+        main > #contents .WEEKLY_BEST > .myContent .my_point {
+            padding: 24px 16px;
+            border-radius: 8px;
+            background-color: rgb(247, 249, 250);
+        }
+        main > #contents .WEEKLY_BEST > .myContent .my_point > div {
+            padding: 20px;
+        }
+        main > #contents .WEEKLY_BEST > .myContent .my_point h2 {
+            font-size: 24px;
+            line-height: 32px;
+            font-weight: 300;
+        }
+        main > #contents .WEEKLY_BEST > .myContent .my_point p {
+            font-size: 24px;
+            font-weight: 700;
+            margin-top: 7px;
+            color: #f2552c;
+        }
+        main > #contents .WEEKLY_BEST > .myContent .my_point_history {
+            margin-top: 40px;
+        }
+        main > #contents .WEEKLY_BEST > .myContent .mph_1 {
+            display: flex;
+            -webkit-box-pack: justify;
+            justify-content: space-between;
+            -webkit-box-align: center;
+            align-items: center;
+        }
+        main > #contents .WEEKLY_BEST > .myContent .mph_1 > h2 {
+            font-size: 24px;
+            line-height: 32px;
+            font-weight: 600;
+        }
+        main > #contents .WEEKLY_BEST > .myContent .mph_2 {
+            margin-top: 20px;
+        }
+        main > #contents .WEEKLY_BEST > .myContent .mph_3 {
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            border-top: 1px solid rgb(234, 237, 239);
+            padding: 20px 10px;
+        }
+        main > #contents .WEEKLY_BEST > .myContent .mph_4 {
+            box-sizing: border-box;
+        }
+        main > #contents .WEEKLY_BEST > .myContent .mph_4 > .mph_4_1 {
+            font-size: 15px;
+            line-height: 18px;
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            color: #424242;
+        }
+        main > #contents .WEEKLY_BEST > .myContent .mph_5 {
+            display: flex;
+            width: 100%;
+            margin-left: 20px;
+        }
+        main > #contents .WEEKLY_BEST > .myContent .mph_5 > .save {
+            background-color: rgb(239, 251, 255);
+            color: #35c5f0;
+            font-size: 13px;
+            line-height: 20px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        main > #contents .WEEKLY_BEST > .myContent .mph_5 > .used {
+            background-color: rgb(255, 237, 237);
+            color: rgb(255, 119, 119);
+            font-size: 13px;
+            line-height: 20px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        main > #contents .WEEKLY_BEST > .myContent .mph_5 > h2 {
+            font-size: 16px;
+            margin-left: 8px;
+            font-weight: 600;
+        }
+        main > #contents .WEEKLY_BEST > .myContent .mph_6 {
+            margin-top: 11px;
+            width: 750px;
+        }
+        main > #contents .WEEKLY_BEST > .myContent .mph_6 > li {
+            font-size: 15px;
+            line-height: 21px;
+            padding-left: 14px;
+            color: rgb(130,140,148);
+            text-align: left;
+            margin-left: 11px;
+            font-weight: 300;
+        }
+        main > #contents .WEEKLY_BEST > .myContent .mph_6 > li::before {
+            content:"·   ";
+            font-weight: bold;
+        }
+        main > #contents .WEEKLY_BEST > .myContent .mph_7 > .plus {
+            text-align: right;
+            margin-left: 16px;
+            font-size: 20px;
+            line-height: 28px;
+            font-weight: 700;
+            color: #35c5f0;
+        }
+        main > #contents .WEEKLY_BEST > .myContent .mph_7 > .minus {
+            text-align: right;
+            margin-left: 16px;
+            font-size: 20px;
+            line-height: 28px;
+            font-weight: 700;
+            color: #f2552c;
+        }
+        main > #contents .WEEKLY_BEST > .myContent .orderPaging {
+            margin: 30px 0;
+        }
+        main > #contents .WEEKLY_BEST > .myContent .orderPaging .opg_1 {
+            display: inline-block;
+            width: 200px;
+        }
+        main > #contents .WEEKLY_BEST > .myContent .orderPaging button {
+            border: 1px solid #dcdee0;
+            width: 37px;
+            height: 39px;
+            border-radius: 4px;
+            font-size: 24px;
+            color: #333;
+            cursor: pointer;
+        }
+        main > #contents .WEEKLY_BEST > .myContent .orderPaging .opg_1 > span {
+            font-size: 18px;
+            padding: 0 28px;
+            color: #929294;
+        }
+        main > #contents .WEEKLY_BEST > .myContent .orderPaging .opg_1 > span > b {
+            font-size: 18px;
+            font-weight: 700;
+            color: #333;
+        }
+        main > #contents .WEEKLY_BEST > .myContent .orderPaging .opg_1 > span > s {
+            font-size: 18px;
+            text-decoration: none;
+            color: #929294;
+        }
+
+
+
+
+        footer {
+            width: 100%;
+            height: auto;
+            text-align: center;
+            background: #000;
+        }
+        footer > .footerIn {
+            width: 90%;
+            height: auto;
+            box-sizing: border-box;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        footer > .footerIn > .f_menu {
+            margin-top: 30px;
+            position: relative;
+        }
+        footer > .footerIn > .f_menu a {
+            color: #fff;
+            font-size: 18px;
+            margin-right: 50px;
+        }
+        footer > .footerIn > .f_menu .sns {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        footer > .footerIn > .f_menu .sns > a {
+            margin: 0 0 0 20px;
+        }
+        footer > .footerIn > .f_menu .sns > a > img {
+            width: 26px;
+        }
+        footer > .footerIn > .f_menu .sns > a:nth-of-type(3) > img {
+            width: 33px;
+        }
+        footer > .footerIn .f_block {
+            display: flex;
+        }
+        footer > .footerIn .f_block1 {
+            margin-top: 30px;
+            width: 60%;
+        }
+        footer > .footerIn .f_block1 > .f_info {
+            text-align: left;
+        }
+        footer > .footerIn .f_block1 > .f_info > h4 {
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        footer > .footerIn .f_block1 > .f_info > li {
+            color: #fff;
+            margin-bottom: 3px;
+        }
+        footer > .footerIn .f_block1 > .f_info > li > i {
+            font-style: normal;
+            font-weight: 600;
+            font-size: 11px;
+            color: #999;
+        }
+        footer > .footerIn .f_block1 > .f_info > .copyright {
+            font-size: 12px;
+        }
+        footer > .footerIn .f_block2 {
+            margin-top: 30px;
+            width: 40%;
+            color: #fff;
+        }
+        footer > .footerIn .f_block2 > .f_cs {
+            text-align: left;
+        }
+        footer > .footerIn .f_block2 > .f_cs > h4 {
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        footer > .footerIn .f_block2 > .f_cs > li {
+            color: #fff;
+            margin-bottom: 3px;
+        }
+        footer > .footerIn .f_block2 > .f_cs > .cs_tel {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        footer > .footerIn .f_terms {
+            margin-top: 100px;
+            position: relative;
+        }
+        footer > .footerIn .f_terms > .terms {}
+        footer > .footerIn .f_terms > .terms > li {
+            display: inline-block;
+            margin: 0 30px;
+            color: #fff;
+        }
+        footer > .footerIn .f_terms > .terms > li > a {
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <header>
+            <div class="headerIn">
+                <section class="logo">AROUND MARKET</section>
+                <section class="lnb">
+                    <a href="#">LOGIN</a>
+                    <a href="#">JOIN US</a>
+                    <a href="#">ORDER</a>
+                    <a href="#">MY PAGE</a>
+                    <a href="#">HEART</a>
+                    <a href="#">COMMUNITY</a>
+                </section>
+                <div class="gnb">
+                    <table>
+                        <tr>
+                            <div class="cate_div">
+                                <a class="categories" href="#">카테고리</a>
+                                <div class="dropdown-cate">
+                                    <ul>
+                                        <li><a href="#">의류</a></li>
+                                        <li><a href="#">패션잡화</a></li>
+                                        <li><a href="#">뷰티</a></li>
+                                        <li><a href="#">출산/유아동</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="#">식품</a></li>
+                                        <li><a href="#">생활용품</a></li>
+                                        <li><a href="#">홈인테리어</a></li>
+                                        <li><a href="#">가전디지털</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="#">스포츠/레저</a></li>
+                                        <li><a href="#">자동차용품</a></li>
+                                        <li><a href="#">도서/음반/DVD</a></li>
+                                        <li><a href="#">완구/취미</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="#">문구/오피스</a></li>
+                                        <li><a href="#">반려동물용품</a></li>
+                                        <li><a href="#">헬스/건강식품</a></li>
+                                        <li><a href="#">티켓</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="#">인기</a>
+                            <a href="#">추천</a>
+                            <a href="#">신규</a>
+                            <a href="#">공구요청</a>
+                        </tr>
+                    </table>
+                </div>
+                <div class="searchBar">
+                    <form class="search-container" action="#">
+                        <div class="search">
+                            <input id="search-box" type="text" class="search-box" name="q"/>
+                            <button type="submit" class="searchBtn">
+                                <input type="image" src="../img/btn_search.png" id="search-submit"/>
+                            </button>
+                            
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div id="contents">
+                <div class="blank50"></div>
+                <div class="WEEKLY_BEST">
+                    <section class="mylnb">
+                        <h2>MY PAGE</h2>
+                        <ul>
+                            <li class="mylab_tit"><a href="#">나의 쇼핑</a></li>
+                            <li><a href="#">주문/배송</a></li>
+                            <li><a href="#">위시리스트</a></li>
+                            <li class="mylab_tit"><a href="#">나의 혜택</a></li>
+                            <li><a href="#">쿠폰/포인트</a></li>
+                            <li class="mylab_tit"><a href="#">나의 활동</a></li>
+                            <li><a href="#">모집 중인 공구</a></li>
+                            <li><a href="#">나의 리뷰</a></li>
+                            <li><a href="#">1:1 문의내역</a></li>
+                            <li class="mylab_tit"><a href="#">나의 정보</a></li>
+                            <li><a href="#">로그아웃</a></li>
+                            <li><a href="#">회원정보 수정</a></li>
+                            <li><a href="#">회원 탈퇴</a></li>
+                        </ul>
+                    </section>
+                    <section class="myContent">
+                        <div>
+                            <div class="my_tab">
+                                <ul>
+                                    <li class="off">
+                                        <a href="#">쿠폰</a>
+                                    </li>
+                                    <li class="on">
+                                        <a href="#">포인트</a>
+                                    </li>
+                                    <li></li>
+                                </ul>
+                            </div>
+                            <div class="my_point">
+                                <div>
+                                    <h2>사용 가능한 포인트</h2>
+                                    <p>1,090 P</p>
+                                </div>
+                            </div>
+                            <div class="my_point_history">
+                                <div class="mph_1">
+                                    <h2>포인트 내역</h2>
+                                </div>
+                                <div class="mph_2">
+                                    <div class="mph_3"> <!-- 반복 -->
+                                        <div class="mph_4">
+                                            <div class="mph_4_1">2023.02.18</div>
+                                        </div>
+                                        <div>
+                                            <div class="mph_5">
+                                                <div class="save">적립</div>
+                                                <h2>사진 리뷰 작성(구매)</h2>
+                                                
+                                            </div>
+                                            <ul class="mph_6">
+                                                <li>[HEM] 헥사 인센스 스틱</li>
+                                                <li>유효기간: 2023.04.27까지</li>
+                                            </ul>
+                                        </div>
+                                        <div class="mph_7">
+                                            <span class="plus">
+                                                + 500P
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="mph_3"> <!-- 반복 -->
+                                        <div class="mph_4">
+                                            <div class="mph_4_1">2023.02.18</div>
+                                        </div>
+                                        <div>
+                                            <div class="mph_5">
+                                                <div class="save">적립</div>
+                                                <h2>사진 리뷰 작성(구매)</h2>
+                                                
+                                            </div>
+                                            <ul class="mph_6">
+                                                <li>[HEM] 헥사 인센스 스틱</li>
+                                                <li>유효기간: 2023.04.27까지</li>
+                                            </ul>
+                                        </div>
+                                        <div class="mph_7">
+                                            <span class="plus">
+                                                + 500P
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="mph_3"> <!-- 반복 -->
+                                        <div class="mph_4">
+                                            <div class="mph_4_1">2023.02.18</div>
+                                        </div>
+                                        <div>
+                                            <div class="mph_5">
+                                                <div class="used">사용</div>
+                                                <h2>주문 사용</h2>
+                                                
+                                            </div>
+                                            <ul class="mph_6">
+                                                <li>[HEM] 헥사 인센스 스틱</li>
+                                                <li style="display: none;">유효기간: 2023.04.27까지</li>
+                                            </ul>
+                                        </div>
+                                        <div class="mph_7">
+                                            <span class="minus">
+                                                - 2,213P
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 페이징 -->
+                            <div class="orderPaging">
+                                <div class="opg_1">
+                                    <button type="button"><</button>
+                                    <span><b>1</b>&nbsp;/&nbsp;<s>3</s></span>
+                                    <button type="button">></button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                <div class="blank1"></div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footerIn">
+                <div class="f_menu">
+                    <table>
+                        <tr>
+                            <td><a href="#">ABOUT</a></td>
+                            <td><a href="#">NOTICE</a></td>
+                            <td><a href="#">CS CENTER</a></td>
+                        </tr>
+                    </table>
+                    <div class="sns">
+                        <a href="#"><img src="../img/instagram.png" alt="인스타그램"></a>
+                        <a href="#"><img src="../img/facebook.png" alt="페이스북"></a>
+                        <a href="#"><img src="../img/youtube.png" alt="유튜브"></a>
+                    </div>
+                </div>
+                <div class="f_block">
+                    <div class="f_block1">
+                        <ul class="f_info">
+                            <h4>INFORMATION</h4>
+                            <li><i>company.</i>&nbsp;&nbsp;주식회사 우동친구</li>
+                            <li><i>owner.</i>&nbsp;&nbsp;김우동</li>
+                            <li><i>email.</i>&nbsp;&nbsp;udonmarket@gmail.com</li>
+                            <li><i>corporate registration num.</i>&nbsp;&nbsp;123-45-67890</li>
+                            <li><i>online license.</i>&nbsp;&nbsp;제 2023-우동구-0123호</li>
+                            <li><i>address.</i>&nbsp;&nbsp;부산광역시 수영구 299 루미너스 빌딩 10층</li>
+                            <br>
+                            <li class="copyright">copyright© udonmarket All rights reserved.</li>
+                            </ul>
+                    </div>
+                    <div class="f_block2">
+                        <ul class="f_cs">
+                            <h4>C/S CENTER</h4>
+                            <li class="cs_tel">070-1234-1234</li>
+                            <li>MON - FRI AM 09:00 - PM 17:00</li>
+                            <li>BREAK PM 12:00 - PM 13:00</li>
+                            <li>SAT, SUN, HOLIDAY
+                                <span style="color:#ce5c5c">closed</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="f_terms">
+                    <ul class="terms">
+                        <li><a href="#">ABOUT US</a></li>
+                        <li>|</li>
+                        <li><a href="#">TERMS</a></li>
+                        <li>|</li>
+                        <li><a href="#">FINANCE POLICY</a></li>
+                        <li>|</li>
+                        <li><a href="#">LOCATION POLICY</a></li>
+                        <li>|</li>
+                        <li><a href="#">PRIVACY POLICY</a></li>
+                        <li>|</li>
+                        <li><a href="#">SHOPPING GUIDE</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>udonmarket::main</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">   
+    <script>
+        $( document ).ready( function() {
+            $( '.slider' ).bxSlider( {
+            auto: true,
+            pause: 5000,
+            minSlides: 3,
+            slideWidth: 1376,
+            } );
+        } );
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Red Hat Display', 'Noto Sans KR', sans-serif;
+            font-size: 11px;
+            font-weight: 400;
+            box-sizing: border-box;
+        }
+        ul, ol {list-style: none;}
+        a {text-decoration: none; color: #000000;}
+        input, textarea {outline: none;}
+
+        #main {
+            width: 100%;
+            height: auto;
+            box-sizing: border-box;
+        }
+        header {
+            width: 100%;
+            height: auto;
+            text-align: center;
+            position: fixed;
+            top: 0px;
+            width: 100%;
+            z-index: 10000;
+            background: #fff;
+            box-shadow: 0 10px 20px 0 rgb(0 0 0 / 5%);
+        }
+        header > .headerIn {
+            width: 90%;
+            height: 133px;
+            box-sizing: border-box;
+            display: inline-block;
+            position: relative;
+        }
+        header > .headerIn > .logo {    
+            width: 275px;
+            height: 38px;
+            position: absolute;
+            left: 0px;
+            top: 17px;
+            font-size: 30px;
+            font-weight: 800;
+        }
+        header > .headerIn > .lnb {
+            position: absolute;
+            top: 26px;
+            right: 9px;
+        }
+        header > .headerIn > .lnb > a {
+            margin-left: 40px;
+        }
+        header > .headerIn > .gnb {
+            position: absolute;
+            bottom: 20px;
+        }
+        header > .headerIn > .gnb a {
+            font-size: 17px;
+            text-align: left;
+            font-weight: 700;
+            margin-right: 33px;
+            display: inline-block;
+        }
+        header > .headerIn > .gnb a:hover {
+            color: #f2552c;
+        }
+        header > .headerIn > .gnb .cate_div {
+            font-size: 17px;
+            text-align: left;
+            font-weight: 700;
+            display: inline-block;
+        }
+        header > .headerIn > .gnb .categories {}
+        header > .headerIn > .gnb .cate_div:hover > .dropdown-cate {
+            display: block;
+        }
+        header > .headerIn > .gnb .dropdown-cate {
+            /* opacity: 0; */
+            /* visibility: hidden; */
+            display: none;
+            position: absolute;
+            transition: .15s;
+            transition: cubic-bezier(.17,.67,.86,.96);
+            box-shadow: 0 10px 20px -20px rgb(0 0 0 / 5%);
+            width: 1200px;
+            background: rgb(255,255,255,1);
+            z-index: 10001;
+            box-sizing: border-box;
+            text-align: left;
+            top: 48px;
+        }
+        header > .headerIn > .gnb .dropdown-cate > ul {
+            width: 25%;
+            float: left;
+            padding: 35px 2px 35px 13px;
+            box-sizing: border-box;
+        }
+        header > .headerIn > .gnb .dropdown-cate > ul > li {}
+        header > .headerIn > .gnb .dropdown-cate > ul > li > a {
+            line-height: 1.5em;
+            display: block;
+            padding: 0 0 0 8px;
+            text-align: left;
+            font-size: 20px;
+        }
+
+        header > .headerIn > .searchBar {
+            position: absolute;
+            bottom: 20px;
+            right: 9px;
+        }
+        header > .headerIn > .searchBar .search {
+            height: 26px;
+            width: 300px;
+            background: #f8f8f8;
+            border: 1px solid #f8f8f8;
+            border-radius: 35px;
+        }
+        header > .headerIn > .searchBar #search-box {
+            width: 250px;
+            font-size: 16px;
+            border: none;
+            background: transparent;
+        }
+        header > .headerIn > .searchBar .searchBtn {
+            border: none;
+            margin-left: 5px;
+            padding-top: 4px;
+            background: transparent;
+        }
+
+        main {
+            width: 100%;
+            height: auto;
+            text-align: center;
+            margin-top: 135px;
+        }
+        main > #contents {
+            width: 90%;
+            box-sizing: border-box;
+            display: inline-block;
+        }
+        main > #contents .blank1 {
+            height: 120px;
+        }
+        main > #contents .blank2 {
+            height: 24px;
+        }
+        main > #contents .WEEKLY_BEST {
+        }
+        main > #contents .WEEKLY_BEST > h1 {
+            font-size: 30px;
+            font-weight: 800;
+            margin-bottom: 30px;
+        }
+        main > #contents .WEEKLY_BEST > .registerContents {
+            width: 80%;
+            display: inline-block;
+            padding: 15px 10px;
+        }
+        main > #contents .WEEKLY_BEST > .registerContents > form {
+        } 
+        main > #contents .WEEKLY_BEST > .registerContents > form > section {}
+        main > #contents .WEEKLY_BEST > .registerContents > form > section > table {
+            border-left: none;
+            border-right: none;
+            line-height: 1.5;
+            width: 100%;
+        }
+        main > #contents .WEEKLY_BEST > .registerContents > form > section > table > caption {
+            display: block;
+            font-size: 20px;
+            font-weight: 500;
+            color: #f2552c;
+            text-align: left;
+        }
+        main > #contents .WEEKLY_BEST > .registerContents > form > section > table th {
+            padding: 17px 0 17px 10px;
+            text-align: left;
+            color: #555;
+            font-size: 15px;
+            font-weight: 500;
+            background: #fbfafa;
+            width: 15%;
+            border-top: 1px solid #e8e8e8;
+        }
+        main > #contents .WEEKLY_BEST > .registerContents > form > section > table th > img {
+            padding-bottom: 2px;
+        }
+        main > #contents .WEEKLY_BEST > .registerContents > form > section > table td {
+            padding: 13px 10px 12px;
+            text-align: left;
+            color: #555;
+            font-size: 15px;
+            font-weight: 500;
+            border-top: 1px solid #e8e8e8;
+        }
+        main > #contents .WEEKLY_BEST > .registerContents > form > section > table td > input {
+            height: 30px;
+            /* line-height: 33px; */
+            padding: 2px 4px;
+            font-size: 20px;
+            border: 1px solid #e8e8e8; 
+        }
+        main > #contents .WEEKLY_BEST > .registerContents > form > section > table td > span {
+            font-size: 13px;
+            vertical-align: middle;
+            color: #555;
+        }
+        main > #contents .WEEKLY_BEST > .registerContents > form > section > table .mobile {}
+        main > #contents .WEEKLY_BEST > .registerContents > form > section > table .mobile > select {
+            width: 90px;
+            height: 30px;
+            font-size: 100%;
+            border: 1px solid #e8e8e8; 
+        }
+        main > #contents .WEEKLY_BEST > .registerContents > form > section > table .mobile > input {
+            width: 90px;
+        }
+        main > #contents .WEEKLY_BEST > .registerContents > form > section > table .addr th {
+            border-bottom: 1px solid #e8e8e8; 
+        }
+        main > #contents .WEEKLY_BEST > .registerContents > form > section > table .addr td {
+            border-bottom: 1px solid #e8e8e8; 
+        }
+        main > #contents .WEEKLY_BEST > .registerContents > form > section > table .addr div:nth-of-type(1) {
+            margin-bottom: 4px;
+        }
+        main > #contents .WEEKLY_BEST > .registerContents > form > section > table .addr div:nth-of-type(2) {
+            margin-bottom: 4px;
+        }
+        main > #contents .WEEKLY_BEST > .registerContents > form > section > table .addr input {
+            height: 30px;
+            /* line-height: 33px; */
+            padding: 2px 4px;
+            font-size: 15px;  
+            border: 1px solid #e8e8e8; 
+        }
+        main > #contents .WEEKLY_BEST > .registerContents > form .submitDiv {
+            width: 30%;
+            margin: 30px 0;
+            display: inline-block;
+            text-align: center;
+        }
+        main > #contents .WEEKLY_BEST > .registerContents > form .submitDiv > input {
+            display: inline-block;
+            width: 40%;
+            background: #000;
+            color: #fff;
+            font-size: 17px;
+            text-align: center;
+            padding: 8px;
+        }
+
+        footer {
+            width: 100%;
+            height: auto;
+            text-align: center;
+            background: #000;
+        }
+        footer > .footerIn {
+            width: 90%;
+            height: auto;
+            box-sizing: border-box;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        footer > .footerIn > .f_menu {
+            margin-top: 30px;
+            position: relative;
+        }
+        footer > .footerIn > .f_menu a {
+            color: #fff;
+            font-size: 18px;
+            margin-right: 50px;
+        }
+        footer > .footerIn > .f_menu .sns {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        footer > .footerIn > .f_menu .sns > a {
+            margin: 0 0 0 20px;
+        }
+        footer > .footerIn > .f_menu .sns > a > img {
+            width: 26px;
+        }
+        footer > .footerIn > .f_menu .sns > a:nth-of-type(3) > img {
+            width: 33px;
+        }
+        footer > .footerIn .f_block {
+            display: flex;
+        }
+        footer > .footerIn .f_block1 {
+            margin-top: 30px;
+            width: 60%;
+        }
+        footer > .footerIn .f_block1 > .f_info {
+            text-align: left;
+        }
+        footer > .footerIn .f_block1 > .f_info > h4 {
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        footer > .footerIn .f_block1 > .f_info > li {
+            color: #fff;
+            margin-bottom: 3px;
+        }
+        footer > .footerIn .f_block1 > .f_info > li > i {
+            font-style: normal;
+            font-weight: 600;
+            font-size: 11px;
+            color: #999;
+        }
+        footer > .footerIn .f_block1 > .f_info > .copyright {
+            font-size: 12px;
+        }
+        footer > .footerIn .f_block2 {
+            margin-top: 30px;
+            width: 40%;
+            color: #fff;
+        }
+        footer > .footerIn .f_block2 > .f_cs {
+            text-align: left;
+        }
+        footer > .footerIn .f_block2 > .f_cs > h4 {
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        footer > .footerIn .f_block2 > .f_cs > li {
+            color: #fff;
+            margin-bottom: 3px;
+        }
+        footer > .footerIn .f_block2 > .f_cs > .cs_tel {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        footer > .footerIn .f_terms {
+            margin-top: 100px;
+            position: relative;
+        }
+        footer > .footerIn .f_terms > .terms {}
+        footer > .footerIn .f_terms > .terms > li {
+            display: inline-block;
+            margin: 0 30px;
+            color: #fff;
+        }
+        footer > .footerIn .f_terms > .terms > li > a {
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <header>
+            <div class="headerIn">
+                <section class="logo">AROUND MARKET</section>
+                <section class="lnb">
+                    <a href="#">LOGIN</a>
+                    <a href="#">JOIN US</a>
+                    <a href="#">ORDER</a>
+                    <a href="#">MY PAGE</a>
+                    <a href="#">HEART</a>
+                    <a href="#">COMMUNITY</a>
+                </section>
+                <div class="gnb">
+                    <table>
+                        <tr>
+                            <div class="cate_div">
+                                <a class="categories" href="#">카테고리</a>
+                                <div class="dropdown-cate">
+                                    <ul>
+                                        <li><a href="#">의류</a></li>
+                                        <li><a href="#">패션잡화</a></li>
+                                        <li><a href="#">뷰티</a></li>
+                                        <li><a href="#">출산/유아동</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="#">식품</a></li>
+                                        <li><a href="#">생활용품</a></li>
+                                        <li><a href="#">홈인테리어</a></li>
+                                        <li><a href="#">가전디지털</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="#">스포츠/레저</a></li>
+                                        <li><a href="#">자동차용품</a></li>
+                                        <li><a href="#">도서/음반/DVD</a></li>
+                                        <li><a href="#">완구/취미</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="#">문구/오피스</a></li>
+                                        <li><a href="#">반려동물용품</a></li>
+                                        <li><a href="#">헬스/건강식품</a></li>
+                                        <li><a href="#">티켓</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="#">인기</a>
+                            <a href="#">추천</a>
+                            <a href="#">신규</a>
+                            <a href="#">공구요청</a>
+                        </tr>
+                    </table>
+                </div>
+                <div class="searchBar">
+                    <form class="search-container" action="#">
+                        <div class="search">
+                            <input id="search-box" type="text" class="search-box" name="q"/>
+                            <button type="submit" class="searchBtn">
+                                <input type="image" src="../img/btn_search.png" id="search-submit"/>
+                            </button>
+                            
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div id="contents">
+                <div class="blank1"></div>
+                <div class="WEEKLY_BEST">
+                    <h1>JOIN</h1>
+                    <div class="registerContents">
+                        <form action="#">
+                            <section>
+                                <table border="0">
+                                    <tr>
+                                        <th>아이디
+                                            <img src="../img/register_essential_icon.gif" alt="필수 입력">
+                                        </th>
+                                        <td>
+                                            <input type="text" name="uid" required>
+                                            <span class="msgId">&nbsp;&nbsp;(영문소문자 4~12자)</span>
+                                            <span class="resultUid"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>비밀번호
+                                            <img src="../img/register_essential_icon.gif" alt="필수 입력">
+                                        </th>
+                                        <td>
+                                            <input type="password" name="pass" required>
+                                            <span class="msgPass">&nbsp;&nbsp;(영문소문자/숫자/특수문자 조합 8~16자)</span>
+                                            <span class="resultPass"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>비밀번호 확인
+                                            <img src="../img/register_essential_icon.gif" alt="필수 입력">
+                                        </th>
+                                        <td>
+                                            <input type="password" name="pass" required>
+                                            <span class="msgPass">&nbsp;&nbsp;영문, 숫자, 특수문자를 조합하여 8~16자까지 설정해 주세요.</span>
+                                            <span class="resultPass"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>이름
+                                            <img src="../img/register_essential_icon.gif" alt="필수 입력">
+                                        </th>
+                                        <td>
+                                            <input type="text" name="name" required>
+                                            <span class="resultName"></span>  
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>회사명 (상호명)
+                                            <img src="../img/register_essential_icon.gif" alt="필수 입력">
+                                        </th>
+                                        <td>
+                                            <input type="text" name="company" required>
+                                            <span class="resultCompany"></span>  
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>대표자
+                                            <img src="../img/register_essential_icon.gif" alt="필수 입력">
+                                        </th>
+                                        <td>
+                                            <input type="text" name="ceo" required>
+                                            <span class="resultCeo"></span>  
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>사업자등록번호
+                                            <img src="../img/register_essential_icon.gif" alt="필수 입력">
+                                        </th>
+                                        <td>
+                                            <input type="text" name="bizNum" required>
+                                            <span class="msgId">&nbsp;&nbsp;(- 포함 12자)</span>
+                                            <span class="resultBizNum"></span>  
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>통신판매업번호
+                                            <img src="../img/register_essential_icon.gif" alt="필수 입력">
+                                        </th>
+                                        <td>
+                                            <input type="text" name="bizTel" required>
+                                            <span class="resultBizTel"></span>  
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>휴대전화
+                                            <img src="../img/register_essential_icon.gif" alt="필수 입력">
+                                        </th>
+                                        <td class="mobile">
+                                            <select name="mobile1" id="mobile1">
+                                                <option value="010">010</option>
+                                                <option value="011">011</option>
+                                                <option value="016">016</option>
+                                                <option value="017">017</option>
+                                                <option value="018">018</option>
+                                                <option value="019">019</option>
+                                            </select>
+                                            &nbsp;&nbsp;&nbsp;-&nbsp;
+                                            <input type="text" name="mobile2" required>
+                                            &nbsp;-&nbsp;
+                                            <input type="text" name="mobile3" required>
+                                            <span class="msgHp">&nbsp;&nbsp;(미기입 시 SMS 수신이 불가합니다.)</span>
+                                            <span class="resultHp"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>이메일
+                                            <img src="../img/register_essential_icon.gif" alt="필수 입력">
+                                        </th>
+                                        <td>
+                                            <input type="email" name="email" required>
+                                            <span class="resultEmail"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>생년월일</th>
+                                        <td>
+                                            <input type="datetime" name="birthday">
+                                        </td>
+                                    </tr>
+                                    <tr class="addr">
+                                        <th>주소
+                                            <img src="../img/register_essential_icon.gif" alt="필수 입력">
+                                        </th>
+                                        <td>
+                                            <div>
+                                                <input type="text" name="zip" id="zip" placeholder="우편번호 입력 클릭" readonly>
+                                            </div> 
+                                            <div>
+                                                <input type="text" name="addr1" id="addr1" size="50" placeholder="주소를 검색하세요." readonly>
+                                            </div>
+                                            <div>
+                                                <input type="text" name="addr2" id="addr2" size="50" placeholder="상세주소를 입력하세요.">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </section>
+                            <div class="submitDiv">
+                                <input type="submit" class="join" value="회원가입">
+                            </div>
+                        </form>
+                    </div>
+                    
+                </div>
+                <div class="blank1"></div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footerIn">
+                <div class="f_menu">
+                    <table>
+                        <tr>
+                            <td><a href="#">ABOUT</a></td>
+                            <td><a href="#">NOTICE</a></td>
+                            <td><a href="#">CS CENTER</a></td>
+                        </tr>
+                    </table>
+                    <div class="sns">
+                        <a href="#"><img src="../img/instagram.png" alt="인스타그램"></a>
+                        <a href="#"><img src="../img/facebook.png" alt="페이스북"></a>
+                        <a href="#"><img src="../img/youtube.png" alt="유튜브"></a>
+                    </div>
+                </div>
+                <div class="f_block">
+                    <div class="f_block1">
+                        <ul class="f_info">
+                            <h4>INFORMATION</h4>
+                            <li><i>company.</i>&nbsp;&nbsp;주식회사 우동친구</li>
+                            <li><i>owner.</i>&nbsp;&nbsp;김우동</li>
+                            <li><i>email.</i>&nbsp;&nbsp;udonmarket@gmail.com</li>
+                            <li><i>corporate registration num.</i>&nbsp;&nbsp;123-45-67890</li>
+                            <li><i>online license.</i>&nbsp;&nbsp;제 2023-우동구-0123호</li>
+                            <li><i>address.</i>&nbsp;&nbsp;부산광역시 수영구 299 루미너스 빌딩 10층</li>
+                            <br>
+                            <li class="copyright">copyright© udonmarket All rights reserved.</li>
+                            </ul>
+                    </div>
+                    <div class="f_block2">
+                        <ul class="f_cs">
+                            <h4>C/S CENTER</h4>
+                            <li class="cs_tel">070-1234-1234</li>
+                            <li>MON - FRI AM 09:00 - PM 17:00</li>
+                            <li>BREAK PM 12:00 - PM 13:00</li>
+                            <li>SAT, SUN, HOLIDAY
+                                <span style="color:#ce5c5c">closed</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="f_terms">
+                    <ul class="terms">
+                        <li><a href="#">ABOUT US</a></li>
+                        <li>|</li>
+                        <li><a href="#">TERMS</a></li>
+                        <li>|</li>
+                        <li><a href="#">FINANCE POLICY</a></li>
+                        <li>|</li>
+                        <li><a href="#">LOCATION POLICY</a></li>
+                        <li>|</li>
+                        <li><a href="#">PRIVACY POLICY</a></li>
+                        <li>|</li>
+                        <li><a href="#">SHOPPING GUIDE</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

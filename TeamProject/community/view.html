@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>udonmarket::main</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">   
+    <script>
+        $( document ).ready( function() {
+            $( '.slider' ).bxSlider( {
+            auto: true,
+            pause: 5000,
+            minSlides: 3,
+            slideWidth: 1376,
+            } );
+        } );
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Red Hat Display', 'Noto Sans KR', sans-serif;
+            font-size: 11px;
+            font-weight: 400;
+            box-sizing: border-box;
+        }
+        ul, ol {list-style: none;}
+        a {text-decoration: none; color: #000000;}
+        input, textarea {outline: none;}
+
+        #main {
+            width: 100%;
+            height: auto;
+            box-sizing: border-box;
+        }
+
+        main > #contents .blank1 {
+            height: 120px;
+        }
+        main > #contents .blank2 {
+            height: 24px;
+        }
+        main > #contents .blank3 {
+            height: 200px;
+        }
+        main > #contents .blank50 {
+            height: 50px;
+        }
+
+        header {
+            width: 100%;
+            height: auto;
+            text-align: center;
+            position: fixed;
+            top: 0px;
+            width: 100%;
+            z-index: 10000;
+            background: #fff;
+            box-shadow: 0 10px 20px 0 rgb(0 0 0 / 5%);
+        }
+        header > .headerIn {
+            width: 90%;
+            height: 133px;
+            box-sizing: border-box;
+            display: inline-block;
+            position: relative;
+        }
+        header > .headerIn > .logo {    
+            width: 275px;
+            height: 38px;
+            position: absolute;
+            left: 0px;
+            top: 17px;
+            font-size: 30px;
+            font-weight: 800;
+        }
+        header > .headerIn > .lnb {
+            position: absolute;
+            top: 26px;
+            right: 9px;
+        }
+        header > .headerIn > .lnb > a {
+            margin-left: 40px;
+        }
+        header > .headerIn > .gnb {
+            position: absolute;
+            bottom: 20px;
+        }
+        header > .headerIn > .gnb a {
+            font-size: 17px;
+            text-align: left;
+            font-weight: 700;
+            margin-right: 33px;
+            display: inline-block;
+        }
+        header > .headerIn > .gnb a:hover {
+            color: #f2552c;
+        }
+        header > .headerIn > .gnb .cate_div {
+            font-size: 17px;
+            text-align: left;
+            font-weight: 700;
+            display: inline-block;
+        }
+        header > .headerIn > .gnb .categories {}
+        header > .headerIn > .gnb .cate_div:hover > .dropdown-cate {
+            display: block;
+        }
+        header > .headerIn > .gnb .dropdown-cate {
+            /* opacity: 0; */
+            /* visibility: hidden; */
+            display: none;
+            position: absolute;
+            transition: .15s;
+            transition: cubic-bezier(.17,.67,.86,.96);
+            box-shadow: 0 10px 20px -20px rgb(0 0 0 / 5%);
+            width: 1200px;
+            background: rgb(255,255,255,1);
+            z-index: 10001;
+            box-sizing: border-box;
+            text-align: left;
+            top: 48px;
+        }
+        header > .headerIn > .gnb .dropdown-cate > ul {
+            width: 25%;
+            float: left;
+            padding: 35px 2px 35px 13px;
+            box-sizing: border-box;
+        }
+        header > .headerIn > .gnb .dropdown-cate > ul > li {}
+        header > .headerIn > .gnb .dropdown-cate > ul > li > a {
+            line-height: 1.5em;
+            display: block;
+            padding: 0 0 0 8px;
+            text-align: left;
+            font-size: 20px;
+        }
+
+        header > .headerIn > .searchBar {
+            position: absolute;
+            bottom: 20px;
+            right: 9px;
+        }
+        header > .headerIn > .searchBar .search {
+            height: 26px;
+            width: 300px;
+            background: #f8f8f8;
+            border: 1px solid #f8f8f8;
+            border-radius: 35px;
+        }
+        header > .headerIn > .searchBar #search-box {
+            width: 250px;
+            font-size: 16px;
+            border: none;
+            background: transparent;
+        }
+        header > .headerIn > .searchBar .searchBtn {
+            border: none;
+            margin-left: 5px;
+            padding-top: 4px;
+            background: transparent;
+        }
+
+        main {
+            width: 100%;
+            height: auto;
+            text-align: center;
+            margin-top: 135px;
+            height: 1500px;
+        }
+        main > #contents {
+            width: 90%;
+            box-sizing: border-box;
+            display: inline-block;
+        }
+        main > #contents .WEEKLY_BEST {
+            width: 100%;
+            border: 1px solid #fff;
+            position: relative;
+        }
+        main > #contents .WEEKLY_BEST > .cslnb {
+            padding: 10px 0 10px 14px;
+            width: 262px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        main > #contents .WEEKLY_BEST > .cslnb > h2 {
+            font-size: 20px;
+            text-align: left;
+            font-weight: 700;
+            padding-bottom: 30px;
+        }
+        main > #contents .WEEKLY_BEST > .cslnb li {
+            text-align: left;
+            padding: 5px 0;
+        }
+        main > #contents .WEEKLY_BEST > .cslnb li > a {
+            font-size: 20px;
+            color: #4d4d4d;
+            font-weight: 400;
+        }
+        main > #contents .WEEKLY_BEST > .commu_content {
+            box-sizing: border-box;
+            display: inline-block;
+            padding: 19px 27px 30px 27px;
+            width: 1036.95px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            border: 1px solid #efefef;
+        }
+        main > #contents .WEEKLY_BEST .view_form {}
+        main > #contents .WEEKLY_BEST .view_head {
+            margin-top: 7px;
+        }
+        main > #contents .WEEKLY_BEST .view_head > .title {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+        }
+        main > #contents .WEEKLY_BEST .view_head > .title > p {
+            width: 100%;
+            height: 24px;
+            border: none;
+            font-size: 20px;
+            line-height: 24px;
+            vertical-align: middle;
+            color: #333;
+            text-align: left;
+        }
+        main > #contents .WEEKLY_BEST .v_info {
+            margin-top: 6px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #d2d2d2;
+            text-align: left;
+            position: relative;
+        }
+        main > #contents .WEEKLY_BEST .v_thumb {
+            display: inline-block;
+        }
+        main > #contents .WEEKLY_BEST .v_thumb > img {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #d7d7d7;
+            border-radius: 50%;
+        }
+        main > #contents .WEEKLY_BEST .v_nick {
+            display: inline-block;
+            font-size: 13px;
+            position: absolute;
+            top: 7px;
+            left: 35px;
+        }
+        main > #contents .WEEKLY_BEST .v_nick > span {
+            font-size: 11px;
+            color: #666666;
+            margin: 0 3px;
+        }
+        main > #contents .WEEKLY_BEST .v_nick > span > i {
+            font-style: normal;
+            font-size: 12px;
+            color: #f2552c;
+            font-weight: 600;
+        }
+        main > #contents .WEEKLY_BEST .v_nick > span:first-child {
+            margin-left: 12px;
+        }
+        
+        main > #contents .WEEKLY_BEST .editor_area {
+            padding-top: 9px;
+        }
+        main > #contents .WEEKLY_BEST .editor_area > textarea {
+            width: 100%;
+            height: 600px;
+            border: none;
+            resize: none;
+            font-size: 15px;
+            line-height: 20px;
+            padding: 15px 10px;
+            border-bottom: 1px solid #d2d2d2;
+            
+        }
+        main > #contents .WEEKLY_BEST .comment_list {
+            border: 1px solid rgb(248, 248, 248);
+            background-color: rgb(248, 248, 248);
+            margin-bottom: 30px;
+        }
+        main > #contents .WEEKLY_BEST .comment_view {}
+        main > #contents .WEEKLY_BEST .comment_view li {
+            padding: 12px 11px;
+            margin: 4px 0;
+        }
+        main > #contents .WEEKLY_BEST .cv_list {}
+        main > #contents .WEEKLY_BEST .cv_list2 {
+            position: relative;
+            text-align: left;
+        }
+        main > #contents .WEEKLY_BEST .cv_thumb {
+            display: inline-block;
+        }
+        main > #contents .WEEKLY_BEST .cv_thumb > img {
+            width: 36px;
+            height: 36px;
+            border: 1px solid #d7d7d7;
+            border-radius: 50%;
+        }
+        main > #contents .WEEKLY_BEST .cv_info {
+            display: inline-block;
+            margin-left: 12px;
+            display: inline-block;
+            font-size: 13px;
+            position: absolute;
+            top: -3px;
+            left: 35px;
+        }
+        main > #contents .WEEKLY_BEST .cv_info > span {
+            color: #959595;
+        }
+        main > #contents .WEEKLY_BEST .cv_info > span:first-child {
+            margin-left: 5px;
+        }
+        main > #contents .WEEKLY_BEST .cv_manage {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        main > #contents .WEEKLY_BEST .cv_manage  .cv_re {
+            font-size: 13px;
+            color: #666666;
+        }
+        main > #contents .WEEKLY_BEST .cv_manage > span > img {
+            width: 11px;
+            height: 11px;
+        }
+        main > #contents .WEEKLY_BEST .cv_txt {
+            display: inline-block;
+            margin-left: 9px;
+            width: 820px;
+            overflow: visible;
+        }
+        main > #contents .WEEKLY_BEST .cv_txt > .cv_txt_first {
+            display: inline-block;
+            height: 16px;
+            margin: 2px 3px 0 0;
+            padding: 0 5px;
+            border: 1px solid #ffb7bb;
+            background-color: #fff3f4;
+            color: #ff5656;
+            border-radius: 25px;
+            line-height: 1.4;
+            font-size: 10px;
+            box-sizing: border-box;
+            vertical-align: top;
+            outline: 0;
+        }
+        main > #contents .WEEKLY_BEST .cv_txt_writer {
+            display: inline-block;
+            height: 16px;
+            margin: 2px 3px 0 0;
+            padding: 0 5px;
+            border: 1px solid #ffb7bb;
+            background-color: #fff3f4;
+            color: #ff5656 !important;
+            border-radius: 25px;
+            line-height: 1.4;
+            font-size: 10px;
+            box-sizing: border-box;
+            vertical-align: top;
+            outline: 0;
+        }
+        main > #contents .WEEKLY_BEST .cv_txt > .cv_txt_inner {
+            font-size: 13px;
+            color: #333;
+        }
+        main > #contents .WEEKLY_BEST .cv_re {
+            padding-left: 30px !important; 
+        }
+        main > #contents .WEEKLY_BEST .comment_write {
+            background-color: rgb(248, 248, 248);
+            padding: 12px 10px 10px 20px;
+            padding-bottom: 46px;
+        }
+        main > #contents .WEEKLY_BEST .comment_write > .inner_txt {
+            border: 1px solid #efefef;
+            border-radius: 3px;
+        }
+        main > #contents .WEEKLY_BEST .comment_write > .inner_txt > textarea {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            resize: none;
+            vertical-align: top;
+            height: 86px;
+            font-size: 13px;
+            color: #333;
+        }
+        main > #contents .WEEKLY_BEST .btn_submit {}
+        main > #contents .WEEKLY_BEST .btn_submit > button {
+            font-size: 13px;
+            border: 1px solid #e4e4e4;
+            padding: 6px 14px;
+            border-radius: 2px;
+            cursor: pointer;
+            box-sizing: border-box;
+            vertical-align: middle;
+            color: #f2552c;
+            background: #fff;
+            float: right;
+            margin-top: 4px;
+        }
+
+
+
+
+        footer {
+            width: 100%;
+            height: auto;
+            text-align: center;
+            background: #000;
+        }
+        footer > .footerIn {
+            width: 90%;
+            height: auto;
+            box-sizing: border-box;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        footer > .footerIn > .f_menu {
+            margin-top: 30px;
+            position: relative;
+        }
+        footer > .footerIn > .f_menu a {
+            color: #fff;
+            font-size: 18px;
+            margin-right: 50px;
+        }
+        footer > .footerIn > .f_menu .sns {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        footer > .footerIn > .f_menu .sns > a {
+            margin: 0 0 0 20px;
+        }
+        footer > .footerIn > .f_menu .sns > a > img {
+            width: 26px;
+        }
+        footer > .footerIn > .f_menu .sns > a:nth-of-type(3) > img {
+            width: 33px;
+        }
+        footer > .footerIn .f_block {
+            display: flex;
+        }
+        footer > .footerIn .f_block1 {
+            margin-top: 30px;
+            width: 60%;
+        }
+        footer > .footerIn .f_block1 > .f_info {
+            text-align: left;
+        }
+        footer > .footerIn .f_block1 > .f_info > h4 {
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        footer > .footerIn .f_block1 > .f_info > li {
+            color: #fff;
+            margin-bottom: 3px;
+        }
+        footer > .footerIn .f_block1 > .f_info > li > i {
+            font-style: normal;
+            font-weight: 600;
+            font-size: 11px;
+            color: #999;
+        }
+        footer > .footerIn .f_block1 > .f_info > .copyright {
+            font-size: 12px;
+        }
+        footer > .footerIn .f_block2 {
+            margin-top: 30px;
+            width: 40%;
+            color: #fff;
+        }
+        footer > .footerIn .f_block2 > .f_cs {
+            text-align: left;
+        }
+        footer > .footerIn .f_block2 > .f_cs > h4 {
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        footer > .footerIn .f_block2 > .f_cs > li {
+            color: #fff;
+            margin-bottom: 3px;
+        }
+        footer > .footerIn .f_block2 > .f_cs > .cs_tel {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        footer > .footerIn .f_terms {
+            margin-top: 100px;
+            position: relative;
+        }
+        footer > .footerIn .f_terms > .terms {}
+        footer > .footerIn .f_terms > .terms > li {
+            display: inline-block;
+            margin: 0 30px;
+            color: #fff;
+        }
+        footer > .footerIn .f_terms > .terms > li > a {
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <header>
+            <div class="headerIn">
+                <section class="logo">AROUND MARKET</section>
+                <section class="lnb">
+                    <a href="#">LOGIN</a>
+                    <a href="#">JOIN US</a>
+                    <a href="#">ORDER</a>
+                    <a href="#">MY PAGE</a>
+                    <a href="#">HEART</a>
+                    <a href="#">COMMUNITY</a>
+                </section>
+                <div class="gnb">
+                    <table>
+                        <tr>
+                            <div class="cate_div">
+                                <a class="categories" href="#">카테고리</a>
+                                <div class="dropdown-cate">
+                                    <ul>
+                                        <li><a href="#">의류</a></li>
+                                        <li><a href="#">패션잡화</a></li>
+                                        <li><a href="#">뷰티</a></li>
+                                        <li><a href="#">출산/유아동</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="#">식품</a></li>
+                                        <li><a href="#">생활용품</a></li>
+                                        <li><a href="#">홈인테리어</a></li>
+                                        <li><a href="#">가전디지털</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="#">스포츠/레저</a></li>
+                                        <li><a href="#">자동차용품</a></li>
+                                        <li><a href="#">도서/음반/DVD</a></li>
+                                        <li><a href="#">완구/취미</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="#">문구/오피스</a></li>
+                                        <li><a href="#">반려동물용품</a></li>
+                                        <li><a href="#">헬스/건강식품</a></li>
+                                        <li><a href="#">티켓</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="#">인기</a>
+                            <a href="#">추천</a>
+                            <a href="#">신규</a>
+                            <a href="#">공구요청</a>
+                        </tr>
+                    </table>
+                </div>
+                <div class="searchBar">
+                    <form class="search-container" action="#">
+                        <div class="search">
+                            <input id="search-box" type="text" class="search-box" name="q"/>
+                            <button type="submit" class="searchBtn">
+                                <input type="image" src="../img/btn_search.png" id="search-submit"/>
+                            </button>
+                            
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div id="contents">
+                <div class="blank50"></div>
+                <div class="WEEKLY_BEST">
+                    <section class="cslnb">
+                        <h2>COMMUNITY</h2>
+                        <ul>
+                            <li><a href="#">우리 동네 이야기</a></li>
+                        </ul>
+                    </section>
+                    <section class="commu_content">
+                        <div class="view_form">
+                            <div class="view_head">
+                                <div class="title">
+                                    <p>전포 와인 맛집 추천해 주세요!</p>
+                                </div>
+                                <div class="v_info">
+                                    <div class="v_thumb">
+                                        <img src="../img/user_img1.jpeg" alt="">
+                                    </div>
+                                    <div class="v_nick">
+                                        레몬나르고빛갚으리오
+                                        <span>조회 24</span>
+                                        <span>23.02.20 00:58</span>
+                                        <span>댓글 <i>2</i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="editor_area">
+                                <textarea readonly>전포에 와인 맛집 있나요? 추천해 주세요~!</textarea>
+                            </div>
+                            <div class="comment_list">
+                                <div class="comment_view">
+                                    <ul class="cv_list">
+                                        <!-- li 반복 -->
+                                        <li>
+                                            <div class="cv_list2">
+                                                <div class="cv_thumb">
+                                                    <img src="../img/user_img2.jpeg" alt="">
+                                                </div>
+                                                <div class="cv_info">
+                                                    아무리생강캐도넌마늘
+                                                    <span>23.02.20 01:09</span>
+                                                </div>
+                                                <div class="cv_manage">
+                                                    <span class="cv_re"><a href="#">답글</a></span>
+                                                    <span><img src="../img/dots.png" alt="더보기"></span>
+                                                </div>
+                                                <div class="cv_txt">
+                                                    <span class="cv_txt_first">첫댓글</span>
+                                                    <span class="cv_txt_inner">태광정밀 좋아요!</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="cv_list2">
+                                                <div class="cv_thumb">
+                                                    <img src="../img/user_img3.jpeg" alt="">
+                                                </div>
+                                                <div class="cv_info">
+                                                    멋있다연진아
+                                                    <span>23.02.20 01:33</span>
+                                                </div>
+                                                <div class="cv_manage">
+                                                    <span class="cv_re"><a href="#">답글</a></span>
+                                                    <span><img src="../img/dots.png" alt="더보기"></span>
+                                                </div>
+                                                <div class="cv_txt">
+                                                    <span class="cv_txt_inner">저는 알트 콤마 추천!</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="cv_re">
+                                            <div class="cv_list2">
+                                                <div class="cv_thumb">
+                                                    <img src="../img/user_img1.jpeg" alt="">
+                                                </div>
+                                                <div class="cv_info">
+                                                    레몬나르고빛갚으리오
+                                                    <span class="cv_txt_writer">작성자</span>
+                                                    <span>23.02.20 01:36</span>
+                                                </div>
+                                                <div class="cv_manage">
+                                                    <span class="cv_re"><a href="#">답글</a></span>
+                                                    <span><img src="../img/dots.png" alt="더보기"></span>
+                                                </div>
+                                                <div class="cv_txt">
+                                                    <span class="cv_txt_inner">추천 땡큐!</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="comment_write">
+                                    <div class="inner_txt">
+                                        <textarea placeholder="인터넷은 우리가 함께 만들어가는 소중한 공간입니다. 댓글 작성 시 타인에 대한 배려와 책임을 담아주세요."></textarea>
+                                    </div>
+                                    <div class="btn_submit">
+                                        <button type="button">등록</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </section>
+                <div class="blank1"></div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footerIn">
+                <div class="f_menu">
+                    <table>
+                        <tr>
+                            <td><a href="#">ABOUT</a></td>
+                            <td><a href="#">NOTICE</a></td>
+                            <td><a href="#">CS CENTER</a></td>
+                        </tr>
+                    </table>
+                    <div class="sns">
+                        <a href="#"><img src="../img/instagram.png" alt="인스타그램"></a>
+                        <a href="#"><img src="../img/facebook.png" alt="페이스북"></a>
+                        <a href="#"><img src="../img/youtube.png" alt="유튜브"></a>
+                    </div>
+                </div>
+                <div class="f_block">
+                    <div class="f_block1">
+                        <ul class="f_info">
+                            <h4>INFORMATION</h4>
+                            <li><i>company.</i>&nbsp;&nbsp;주식회사 우동친구</li>
+                            <li><i>owner.</i>&nbsp;&nbsp;김우동</li>
+                            <li><i>email.</i>&nbsp;&nbsp;udonmarket@gmail.com</li>
+                            <li><i>corporate registration num.</i>&nbsp;&nbsp;123-45-67890</li>
+                            <li><i>online license.</i>&nbsp;&nbsp;제 2023-우동구-0123호</li>
+                            <li><i>address.</i>&nbsp;&nbsp;부산광역시 수영구 299 루미너스 빌딩 10층</li>
+                            <br>
+                            <li class="copyright">copyright© udonmarket All rights reserved.</li>
+                            </ul>
+                    </div>
+                    <div class="f_block2">
+                        <ul class="f_cs">
+                            <h4>C/S CENTER</h4>
+                            <li class="cs_tel">070-1234-1234</li>
+                            <li>MON - FRI AM 09:00 - PM 17:00</li>
+                            <li>BREAK PM 12:00 - PM 13:00</li>
+                            <li>SAT, SUN, HOLIDAY
+                                <span style="color:#ce5c5c">closed</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="f_terms">
+                    <ul class="terms">
+                        <li><a href="#">ABOUT US</a></li>
+                        <li>|</li>
+                        <li><a href="#">TERMS</a></li>
+                        <li>|</li>
+                        <li><a href="#">FINANCE POLICY</a></li>
+                        <li>|</li>
+                        <li><a href="#">LOCATION POLICY</a></li>
+                        <li>|</li>
+                        <li><a href="#">PRIVACY POLICY</a></li>
+                        <li>|</li>
+                        <li><a href="#">SHOPPING GUIDE</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

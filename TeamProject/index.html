@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>main</title>
+    <link rel="stylesheet" href="/TeamProject/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".slider > ul").bxSlider({
+                easing: "linear",
+            });
+        });
+    </script>
+</head>
+<body id="main">
+    <div id="wrapper">
+        <!-- 헤더 -->
+        <header>
+            <div id="header">
+                <div class="headerIn">
+                    <div class="lnb">
+                        <a href="/member/login.html">LOGIN</a>
+                        <a href="/member/join.html">JOIN US</a>
+                        <a href="/myshop/order/list.html">ORDER</a>
+                        <a href="/myshop/index.html">MY PAGE</a>
+                        <a href="/order/basket.html">CART</a>
+                        <a href="/order/basket.html">CART</a>
+                        <a href="/order/basket.html">CART</a>
+                        <a href="#">DELIVERY</a>
+                        <div class="community">
+                            <a hrf="/board/notice.html">COMMUNITY</a>
+                            <!--
+                            <div class="gnb_Sub">
+                                <div class="commuBox">
+                                    <h4>COMMUNITY</h4>
+                                    <ul class="commu_list">
+                                        <li><a href="/board/notice.html">NOTICE</a></li>
+                                        <li><a href="/board/qna.html">Q & A</a></li>
+                                        <li><a href="/board/faq.html">FAQ</a></li>
+                                    </ul>
+                                    <ul class="commu_list">
+                                        <li><a href="/board/review.html">REVIEW</a></li>
+                                        <li><a href="/board/event.html">EVENT</a></li>
+                                        <li><a href="/board/community.html">COMMUNITY</a></li>
+                                    </ul>
+                                </div>
+                                <div class="commuBox">
+                                    <ul class="cscenter">
+                                        <li class="tit">C/S CENTER</li>
+                                        <li class="cs_tel">070-123-1234</li>
+                                        <li>MON - FRI AM 09:00 - PM 17:00</li>
+                                        <li>BREAK PM 12:00 - PM 13:00</li>
+                                        <li>SAT, SUN, HOLIDAY
+                                            <span style="color:#ce5c5c">closed</span>
+                                        </li>
+                                    </ul>
+                                    <ul class="cscenter2">
+                                        <h5>BANK ACCOUNT</h5>
+                                        <li>농협 123-1234-1234-12</li>
+                                        <li>예금주 (주) 우동친구 컴퍼니</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            -->
+                        </div>
+                    </div>
+                    <h1>
+                        <a href="/index.html">
+                            <img src="./img/main_logo.png" alt="우동마켓">
+                        </a>
+                    </h1>
+                    <form class="search-container" action="#">
+                        <div class="search">
+                            <input id="search-box" type="text" class="search-box" name="q"/>
+                            <input type="image" src="./img/btn_search.png" id="search-submit"/>
+                        </div>
+                    </form>
+                    <div class="popularKeyword">
+                        <a href="#">
+                            <span>1</span> 유기농 상주 곶감
+                        </a>
+                    </div>
+                    <div class="gnb">
+                        <ul>
+                            <li><a href="#">카테고리</a></li>
+                            <li><a href="#">홈</a></li>
+                            <li><a href="#">인기</a></li>
+                            <li><a href="#">신규</a></li>
+                            <li><a href="#">공구요청</a></li>
+                            <li><a href="#">MENU1</a></li>
+                            <li><a href="#">MENU2</a></li>
+                            <li><a href="#">MENU3</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main id="content">
+            <section class="slider">
+                <ul>
+                    <li><a href="#"><img src="./img/main_slide_img1.png" alt="slide1"></a></li>
+                    <li><a href="#"><img src="./img/main_slide_img2.png" alt="slide2"></a></li>
+                    <li><a href="#"><img src="./img/main_slide_img3.png" alt="slide3"></a></li>
+                </ul>
+            </section>
+            <section class="section-best">
+                <div class="section-best-header">
+                    <h2 class="section-tit">
+                        <span>BEST</span>
+                    </h2>
+                </div>
+                <div class="section-wrapper">
+                    <ul class="section-grid">
+                        <li>
+                            <div class="section-grid-card">
+                                <em>1</em>
+                                <img class="ranking-label" src="./img/ranking_label.png" alt="순위">
+                                <button class="ico-favorite"><img src="./img/empty-heart.png" alt="empty-heart"></button>
+                                <div class="section-gride-card-img">
+                                    <a href="#"><img src="./img/grid-img-ex.jpg" alt="section-grid-card-img"></a>
+                                </div>
+                                <div class="section-grid-info">
+                                    <!-- 판매사별 판매 상품 조회 페이지 이동 -->
+                                    <a href="#" class="section-grid-seller">푸딩하우스</a>
+                                    <!-- 해당 제품 보기 페이지 이동  -->
+                                    <a href="#" class="section-grid-product">행복을 선물하는 푸딩 6종</a>
+                                    <p>타히티 바닐라빈을 넣은 커스터드 크림 + 생크림 + 마스카포네 치즈</p>
+                                </div>
+                                <div class="section-grid-status">
+                                    <span class="section-grid-status-percent">85</span>
+                                    <span class="section-grid-status-day">1일 남음</span>
+                                </div>
+                                <div class="section-grid-status-percentBar"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="section-grid-card">
+                                <em>2</em>
+                                <img class="ranking-label" src="./img/ranking_label.png" alt="순위">
+                                <button class="ico-favorite"><img src="./img/empty-heart.png" alt="empty-heart"></button>
+                                <div class="section-gride-card-img">
+                                    <a href="#"><img src="./img/grid-img-ex2.jpg" alt="section-grid-card-img"></a>
+                                </div>
+                                <div class="section-grid-info">
+                                    <!-- 판매사별 판매 상품 조회 페이지 이동 -->
+                                    <a href="#" class="section-grid-seller">러브액츄얼리</a>
+                                    <!-- 해당 제품 보기 페이지 이동  -->
+                                    <a href="#" class="section-grid-product">주문제작 포토 키링</a>
+                                    <p>세상에 하나뿐인 아크릴 포토 키링</p>
+                                </div>
+                                <div class="section-grid-status">
+                                    <span class="section-grid-status-percent">85</span>
+                                    <span class="section-grid-status-day">2일 남음</span>
+                                </div>
+                                <div class="section-grid-status-percentBar"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="section-grid-card">
+                                <em>3</em>
+                                <img class="ranking-label" src="./img/ranking_label.png" alt="순위">
+                                <button class="ico-favorite"><img src="./img/empty-heart.png" alt="empty-heart"></button>
+                                <div class="section-gride-card-img">
+                                    <a href="#"><img src="./img/grid-img-ex3.jpg" alt="section-grid-card-img" style="height: 188.09px;"></a>
+                                </div>
+                                <div class="section-grid-info">
+                                    <!-- 판매사별 판매 상품 조회 페이지 이동 -->
+                                    <a href="#" class="section-grid-seller">베리농장</a>
+                                    <!-- 해당 제품 보기 페이지 이동  -->
+                                    <a href="#" class="section-grid-product">베리베리 킹스베리</a>
+                                    <p>당도가 높고, 과질이 단단하며, 저장성이 좋은 우리 딸기</p>
+                                </div>
+                                <div class="section-grid-status">
+                                    <span class="section-grid-status-percent">85</span>
+                                    <span class="section-grid-status-day">3일 남음</span>
+                                </div>
+                                <div class="section-grid-status-percentBar"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="section-grid-card">
+                                <em>4</em>
+                                <img class="ranking-label" src="./img/ranking_label.png" alt="순위">
+                                <button class="ico-favorite"><img src="./img/empty-heart.png" alt="empty-heart"></button>
+                                <div class="section-gride-card-img">
+                                    <a href="#"><img src="./img/grid-img-ex4.jpg" alt="section-grid-card-img"></a>
+                                </div>
+                                <div class="section-grid-info">
+                                    <!-- 판매사별 판매 상품 조회 페이지 이동 -->
+                                    <a href="#" class="section-grid-seller">내 차 장만의 꿈</a>
+                                    <!-- 해당 제품 보기 페이지 이동  -->
+                                    <a href="#" class="section-grid-product">기관지에 좋은 작두콩차</a>
+                                    <p>올해 수확한 100% 국산 바른 작두콩차</p>
+                                </div>
+                                <div class="section-grid-status">
+                                    <span class="section-grid-status-percent">85</span>
+                                    <span class="section-grid-status-day">4일 남음</span>
+                                </div>
+                                <div class="section-grid-status-percentBar"></div>
+                            </div>
+                        </li>
+                        
+                    </ul>
+                    <ul class="section-grid">
+                        <li>
+                            <div class="section-grid-card">
+                                <em>5</em>
+                                <img class="ranking-label" src="./img/ranking_label.png" alt="순위">
+                                <button class="ico-favorite"><img src="./img/empty-heart.png" alt="empty-heart"></button>
+                                <div class="section-gride-card-img">
+                                    <a href="#"><img src="./img/grid-img-ex5.jpg" alt="section-grid-card-img"></a>
+                                </div>
+                                <div class="section-grid-info">
+                                    <!-- 판매사별 판매 상품 조회 페이지 이동 -->
+                                    <a href="#" class="section-grid-seller">윙윙이네</a>
+                                    <!-- 해당 제품 보기 페이지 이동  -->
+                                    <a href="#" class="section-grid-product">자연꿀 100% 소량 판매</a>
+                                    <p>설탕을 0.01%도 첨가하지 않은 100% 국산 자연꿀</p>
+                                </div>
+                                <div class="section-grid-status">
+                                    <span class="section-grid-status-percent">85</span>
+                                    <span class="section-grid-status-day">5일 남음</span>
+                                </div>
+                                <div class="section-grid-status-percentBar"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="section-grid-card">
+                                <em>6</em>
+                                <img class="ranking-label" src="./img/ranking_label.png" alt="순위">
+                                <button class="ico-favorite"><img src="./img/empty-heart.png" alt="empty-heart"></button>
+                                <div class="section-gride-card-img">
+                                    <a href="#"><img src="./img/grid-img-ex6.jpg" alt="section-grid-card-img"></a>
+                                </div>
+                                <div class="section-grid-info">
+                                    <!-- 판매사별 판매 상품 조회 페이지 이동 -->
+                                    <a href="#" class="section-grid-seller">피쉬셰프</a>
+                                    <!-- 해당 제품 보기 페이지 이동  -->
+                                    <a href="#" class="section-grid-product">입에서 살살 녹는 연어장</a>
+                                    <p>싱싱한 연어와 장인의 실력이 만나 만들어진 연어장</p>
+                                </div>
+                                <div class="section-grid-status">
+                                    <span class="section-grid-status-percent">85</span>
+                                    <span class="section-grid-status-day">8일 남음</span>
+                                </div>
+                                <div class="section-grid-status-percentBar"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="section-grid-card">
+                                <em>7</em>
+                                <img class="ranking-label" src="./img/ranking_label.png" alt="순위">
+                                <button class="ico-favorite"><img src="./img/empty-heart.png" alt="empty-heart"></button>
+                                <div class="section-gride-card-img">
+                                    <a href="#"><img src="./img/grid-img-ex7.jpg" alt="section-grid-card-img"></a>
+                                </div>
+                                <div class="section-grid-info">
+                                    <!-- 판매사별 판매 상품 조회 페이지 이동 -->
+                                    <a href="#" class="section-grid-seller">구름이네</a>
+                                    <!-- 해당 제품 보기 페이지 이동  -->
+                                    <a href="#" class="section-grid-product">신선한 채소+과일 수제간식 펫큐브</a>
+                                    <p>100% 주문 이후 제작, 안심하고 먹을 수 있는 우리 강아지 간식</p>
+                                </div>
+                                <div class="section-grid-status">
+                                    <span class="section-grid-status-percent">85</span>
+                                    <span class="section-grid-status-day">1일 남음</span>
+                                </div>
+                                <div class="section-grid-status-percentBar"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="section-grid-card">
+                                <em>8</em>
+                                <img class="ranking-label" src="./img/ranking_label.png" alt="순위">
+                                <button class="ico-favorite"><img src="./img/empty-heart.png" alt="empty-heart"></button>
+                                <div class="section-gride-card-img">
+                                    <a href="#"><img src="./img/grid-img-ex8.jpg" alt="section-grid-card-img"></a>
+                                </div>
+                                <div class="section-grid-info">
+                                    <!-- 판매사별 판매 상품 조회 페이지 이동 -->
+                                    <a href="#" class="section-grid-seller">쌈싸먹어</a>
+                                    <!-- 해당 제품 보기 페이지 이동  -->
+                                    <a href="#" class="section-grid-product">아삭아삭 모듬쌈</a>
+                                    <p>직접 재배하는 신선하고 다양하고 푸짐한 모듬쌈</p>
+                                </div>
+                                <div class="section-grid-status">
+                                    <span class="section-grid-status-percent">85</span>
+                                    <span class="section-grid-status-day">9일 남음</span>
+                                </div>
+                                <div class="section-grid-status-percentBar"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section class="section-best">
+                <div class="section-best-header">
+                    <h2 class="section-tit">
+                        <span>RECOMMEND</span>
+                    </h2>
+                </div>
+                <div class="section-wrapper">
+                    <ul class="section-grid">
+                        <li>
+                            <div class="section-grid-card">
+                                <em>1</em>
+                                <img class="ranking-label" src="./img/ranking_label.png" alt="순위">
+                                <button class="ico-favorite"><img src="./img/empty-heart.png" alt="empty-heart"></button>
+                                <div class="section-gride-card-img">
+                                    <a href="#"><img src="./img/grid-img-ex9.jpg" alt="section-grid-card-img"></a>
+                                </div>
+                                <div class="section-grid-info">
+                                    <!-- 판매사별 판매 상품 조회 페이지 이동 -->
+                                    <a href="#" class="section-grid-seller">푸딩하우스</a>
+                                    <!-- 해당 제품 보기 페이지 이동  -->
+                                    <a href="#" class="section-grid-product">행복을 선물하는 푸딩 6종</a>
+                                    <p>타히티 바닐라빈을 넣은 커스터드 크림 + 생크림 + 마스카포네 치즈</p>
+                                </div>
+                                <div class="section-grid-status">
+                                    <span class="section-grid-status-percent">85</span>
+                                    <span class="section-grid-status-day">1일 남음</span>
+                                </div>
+                                <div class="section-grid-status-percentBar"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="section-grid-card">
+                                <em>1</em>
+                                <img class="ranking-label" src="./img/ranking_label.png" alt="순위">
+                                <button class="ico-favorite"><img src="./img/empty-heart.png" alt="empty-heart"></button>
+                                <div class="section-gride-card-img">
+                                    <a href="#"><img src="./img/grid-img-ex9.jpg" alt="section-grid-card-img"></a>
+                                </div>
+                                <div class="section-grid-info">
+                                    <!-- 판매사별 판매 상품 조회 페이지 이동 -->
+                                    <a href="#" class="section-grid-seller">푸딩하우스</a>
+                                    <!-- 해당 제품 보기 페이지 이동  -->
+                                    <a href="#" class="section-grid-product">행복을 선물하는 푸딩 6종</a>
+                                    <p>타히티 바닐라빈을 넣은 커스터드 크림 + 생크림 + 마스카포네 치즈</p>
+                                </div>
+                                <div class="section-grid-status">
+                                    <span class="section-grid-status-percent">85</span>
+                                    <span class="section-grid-status-day">1일 남음</span>
+                                </div>
+                                <div class="section-grid-status-percentBar"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="section-grid-card">
+                                <em>1</em>
+                                <img class="ranking-label" src="./img/ranking_label.png" alt="순위">
+                                <button class="ico-favorite"><img src="./img/empty-heart.png" alt="empty-heart"></button>
+                                <div class="section-gride-card-img">
+                                    <a href="#"><img src="./img/grid-img-ex9.jpg" alt="section-grid-card-img"></a>
+                                </div>
+                                <div class="section-grid-info">
+                                    <!-- 판매사별 판매 상품 조회 페이지 이동 -->
+                                    <a href="#" class="section-grid-seller">푸딩하우스</a>
+                                    <!-- 해당 제품 보기 페이지 이동  -->
+                                    <a href="#" class="section-grid-product">행복을 선물하는 푸딩 6종</a>
+                                    <p>타히티 바닐라빈을 넣은 커스터드 크림 + 생크림 + 마스카포네 치즈</p>
+                                </div>
+                                <div class="section-grid-status">
+                                    <span class="section-grid-status-percent">85</span>
+                                    <span class="section-grid-status-day">1일 남음</span>
+                                </div>
+                                <div class="section-grid-status-percentBar"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="section-grid-card">
+                                <em>1</em>
+                                <img class="ranking-label" src="./img/ranking_label.png" alt="순위">
+                                <button class="ico-favorite"><img src="./img/empty-heart.png" alt="empty-heart"></button>
+                                <div class="section-gride-card-img">
+                                    <a href="#"><img src="./img/grid-img-ex9.jpg" alt="section-grid-card-img"></a>
+                                </div>
+                                <div class="section-grid-info">
+                                    <!-- 판매사별 판매 상품 조회 페이지 이동 -->
+                                    <a href="#" class="section-grid-seller">푸딩하우스</a>
+                                    <!-- 해당 제품 보기 페이지 이동  -->
+                                    <a href="#" class="section-grid-product">행복을 선물하는 푸딩 6종</a>
+                                    <p>타히티 바닐라빈을 넣은 커스터드 크림 + 생크림 + 마스카포네 치즈</p>
+                                </div>
+                                <div class="section-grid-status">
+                                    <span class="section-grid-status-percent">85</span>
+                                    <span class="section-grid-status-day">1일 남음</span>
+                                </div>
+                                <div class="section-grid-status-percentBar"></div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="section-grid">
+                        <li>
+                            <div class="section-grid-card">
+                                <em>1</em>
+                                <img class="ranking-label" src="./img/ranking_label.png" alt="순위">
+                                <button class="ico-favorite"><img src="./img/empty-heart.png" alt="empty-heart"></button>
+                                <div class="section-gride-card-img">
+                                    <a href="#"><img src="./img/grid-img-ex9.jpg" alt="section-grid-card-img"></a>
+                                </div>
+                                <div class="section-grid-info">
+                                    <!-- 판매사별 판매 상품 조회 페이지 이동 -->
+                                    <a href="#" class="section-grid-seller">푸딩하우스</a>
+                                    <!-- 해당 제품 보기 페이지 이동  -->
+                                    <a href="#" class="section-grid-product">행복을 선물하는 푸딩 6종</a>
+                                    <p>타히티 바닐라빈을 넣은 커스터드 크림 + 생크림 + 마스카포네 치즈</p>
+                                </div>
+                                <div class="section-grid-status">
+                                    <span class="section-grid-status-percent">85</span>
+                                    <span class="section-grid-status-day">1일 남음</span>
+                                </div>
+                                <div class="section-grid-status-percentBar"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="section-grid-card">
+                                <em>1</em>
+                                <img class="ranking-label" src="./img/ranking_label.png" alt="순위">
+                                <button class="ico-favorite"><img src="./img/empty-heart.png" alt="empty-heart"></button>
+                                <div class="section-gride-card-img">
+                                    <a href="#"><img src="./img/grid-img-ex9.jpg" alt="section-grid-card-img"></a>
+                                </div>
+                                <div class="section-grid-info">
+                                    <!-- 판매사별 판매 상품 조회 페이지 이동 -->
+                                    <a href="#" class="section-grid-seller">푸딩하우스</a>
+                                    <!-- 해당 제품 보기 페이지 이동  -->
+                                    <a href="#" class="section-grid-product">행복을 선물하는 푸딩 6종</a>
+                                    <p>타히티 바닐라빈을 넣은 커스터드 크림 + 생크림 + 마스카포네 치즈</p>
+                                </div>
+                                <div class="section-grid-status">
+                                    <span class="section-grid-status-percent">85</span>
+                                    <span class="section-grid-status-day">1일 남음</span>
+                                </div>
+                                <div class="section-grid-status-percentBar"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="section-grid-card">
+                                <em>1</em>
+                                <img class="ranking-label" src="./img/ranking_label.png" alt="순위">
+                                <button class="ico-favorite"><img src="./img/empty-heart.png" alt="empty-heart"></button>
+                                <div class="section-gride-card-img">
+                                    <a href="#"><img src="./img/grid-img-ex9.jpg" alt="section-grid-card-img"></a>
+                                </div>
+                                <div class="section-grid-info">
+                                    <!-- 판매사별 판매 상품 조회 페이지 이동 -->
+                                    <a href="#" class="section-grid-seller">푸딩하우스</a>
+                                    <!-- 해당 제품 보기 페이지 이동  -->
+                                    <a href="#" class="section-grid-product">행복을 선물하는 푸딩 6종</a>
+                                    <p>타히티 바닐라빈을 넣은 커스터드 크림 + 생크림 + 마스카포네 치즈</p>
+                                </div>
+                                <div class="section-grid-status">
+                                    <span class="section-grid-status-percent">85</span>
+                                    <span class="section-grid-status-day">1일 남음</span>
+                                </div>
+                                <div class="section-grid-status-percentBar"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="section-grid-card">
+                                <em>1</em>
+                                <img class="ranking-label" src="./img/ranking_label.png" alt="순위">
+                                <button class="ico-favorite"><img src="./img/empty-heart.png" alt="empty-heart"></button>
+                                <div class="section-gride-card-img">
+                                    <a href="#"><img src="./img/grid-img-ex9.jpg" alt="section-grid-card-img"></a>
+                                </div>
+                                <div class="section-grid-info">
+                                    <!-- 판매사별 판매 상품 조회 페이지 이동 -->
+                                    <a href="#" class="section-grid-seller">푸딩하우스</a>
+                                    <!-- 해당 제품 보기 페이지 이동  -->
+                                    <a href="#" class="section-grid-product">행복을 선물하는 푸딩 6종</a>
+                                    <p>타히티 바닐라빈을 넣은 커스터드 크림 + 생크림 + 마스카포네 치즈</p>
+                                </div>
+                                <div class="section-grid-status">
+                                    <span class="section-grid-status-percent">85</span>
+                                    <span class="section-grid-status-day">1일 남음</span>
+                                </div>
+                                <div class="section-grid-status-percentBar"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+        <footer id="footer">
+            <div class="f_block1">
+                <ul class="f_info">
+                    <h4>INFORMATION</h4>
+                    <li><i>company.</i>&nbsp;&nbsp;주식회사 우동친구</li>
+                    <li><i>owner.</i>&nbsp;&nbsp;김우동</li>
+                    <li><i>email.</i>&nbsp;&nbsp;udonmarket@gmail.com</li>
+                    <li><i>corporate registration num.</i>&nbsp;&nbsp;123-45-67890</li>
+                    <li><i>online license.</i>&nbsp;&nbsp;제 2023-우동구-0123호</li>
+                    <li><i>address.</i>&nbsp;&nbsp;부산광역시 수영구 299 루미너스 빌딩 10층</li>
+                    <br>
+                    <li class="copyright">copyright© udonmarket All rights reserved.</li>
+                </ul>
+            </div>
+            <div class="f_block2">
+                <ul class="f_cs">
+                    <h4>C/S CENTER</h4>
+                    <li class="cs_tel">070-1234-1234</li>
+                    <li>MON - FRI AM 09:00 - PM 17:00</li>
+                    <li>BREAK PM 12:00 - PM 13:00</li>
+                    <li>SAT, SUN, HOLIDAY
+                        <span style="color:#ce5c5c">closed</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="f_block3">
+                <ul class="f_bank">
+                    <h4>BANK ACCOUNT</h4>
+                    <li>농협 123-1234-1234-12</li>
+                    <li>예금주 (주) 우동친구 컴퍼니</li>
+                </ul>
+            </div>
+        </footer>
+        <div id="footer2">
+            <ul class="f_menu">
+                <li><a href="#">ABOUT US</a></li>
+                <li><a href="#">TERMS</a></li>
+                <li><a href="#">FINANCE POLICY</a></li>
+                <li><a href="#">LOCATION POLICY</a></li>
+                <li><a href="#">PRIVACY POLICY</a></li>
+                <li><a href="#">SHOPPING GUIDE</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

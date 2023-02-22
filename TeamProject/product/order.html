@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>udonmarket::main</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">   
+    <script>
+        $( document ).ready( function() {
+            $( '.slider' ).bxSlider( {
+            auto: true,
+            pause: 5000,
+            minSlides: 3,
+            slideWidth: 1376,
+            } );
+        } );
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Red Hat Display', 'Noto Sans KR', sans-serif;
+            font-size: 11px;
+            font-weight: 400;
+            box-sizing: border-box;
+        }
+        ul, ol {list-style: none;}
+        a {text-decoration: none; color: #000000;}
+        input, textarea {outline: none;}
+
+        #main {
+            width: 100%;
+            height: auto;
+            box-sizing: border-box;
+        }
+
+        main > #contents .blank1 {
+            height: 120px;
+        }
+        main > #contents .blank2 {
+            height: 24px;
+        }
+        main > #contents .blank3 {
+            height: 200px;
+        }
+
+        header {
+            width: 100%;
+            height: auto;
+            text-align: center;
+            position: fixed;
+            top: 0px;
+            width: 100%;
+            z-index: 10000;
+            background: #fff;
+            box-shadow: 0 10px 20px 0 rgb(0 0 0 / 5%);
+        }
+        header > .headerIn {
+            width: 90%;
+            height: 133px;
+            box-sizing: border-box;
+            display: inline-block;
+            position: relative;
+        }
+        header > .headerIn > .logo {    
+            width: 275px;
+            height: 38px;
+            position: absolute;
+            left: 0px;
+            top: 17px;
+            font-size: 30px;
+            font-weight: 800;
+        }
+        header > .headerIn > .lnb {
+            position: absolute;
+            top: 26px;
+            right: 9px;
+        }
+        header > .headerIn > .lnb > a {
+            margin-left: 40px;
+        }
+        header > .headerIn > .gnb {
+            position: absolute;
+            bottom: 20px;
+        }
+        header > .headerIn > .gnb a {
+            font-size: 17px;
+            text-align: left;
+            font-weight: 700;
+            margin-right: 33px;
+            display: inline-block;
+        }
+        header > .headerIn > .gnb a:hover {
+            color: #f2552c;
+        }
+        header > .headerIn > .gnb .cate_div {
+            font-size: 17px;
+            text-align: left;
+            font-weight: 700;
+            display: inline-block;
+        }
+        header > .headerIn > .gnb .categories {}
+        header > .headerIn > .gnb .cate_div:hover > .dropdown-cate {
+            display: block;
+        }
+        header > .headerIn > .gnb .dropdown-cate {
+            /* opacity: 0; */
+            /* visibility: hidden; */
+            display: none;
+            position: absolute;
+            transition: .15s;
+            transition: cubic-bezier(.17,.67,.86,.96);
+            box-shadow: 0 10px 20px -20px rgb(0 0 0 / 5%);
+            width: 1200px;
+            background: rgb(255,255,255,1);
+            z-index: 10001;
+            box-sizing: border-box;
+            text-align: left;
+            top: 48px;
+        }
+        header > .headerIn > .gnb .dropdown-cate > ul {
+            width: 25%;
+            float: left;
+            padding: 35px 2px 35px 13px;
+            box-sizing: border-box;
+        }
+        header > .headerIn > .gnb .dropdown-cate > ul > li {}
+        header > .headerIn > .gnb .dropdown-cate > ul > li > a {
+            line-height: 1.5em;
+            display: block;
+            padding: 0 0 0 8px;
+            text-align: left;
+            font-size: 20px;
+        }
+
+        header > .headerIn > .searchBar {
+            position: absolute;
+            bottom: 20px;
+            right: 9px;
+        }
+        header > .headerIn > .searchBar .search {
+            height: 26px;
+            width: 300px;
+            background: #f8f8f8;
+            border: 1px solid #f8f8f8;
+            border-radius: 35px;
+        }
+        header > .headerIn > .searchBar #search-box {
+            width: 250px;
+            font-size: 16px;
+            border: none;
+            background: transparent;
+        }
+        header > .headerIn > .searchBar .searchBtn {
+            border: none;
+            margin-left: 5px;
+            padding-top: 4px;
+            background: transparent;
+        }
+
+        main {
+            width: 100%;
+            height: auto;
+            text-align: center;
+            margin-top: 135px;
+        }
+        main > #contents {
+            width: 90%;
+            box-sizing: border-box;
+            display: inline-block;
+            height: 1650px;
+        }
+        main > #contents .WEEKLY_BEST {
+            position: relative;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo {
+            display: inline-block;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            box-sizing: border-box;
+            width: 55%;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > section {
+            margin: 38px 0;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-align: left;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .deliveryAddr {}
+        main > #contents .WEEKLY_BEST > .orderInfo > .deliveryAddr > div:nth-of-type(1) {
+            border-bottom: 1px solid rgb(234,235,239);
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .deliveryAddr > div > h2 {
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 63px;
+            text-align: left;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .deliveryAddr > .addr {
+            margin-top: 10px;
+            font-size: 19px;
+            text-align: left;
+            color: rgb(41, 41, 41);
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .deliveryAddr > .info {
+            text-align: left;
+            line-height: 18px;
+            margin-top: 9px;
+            font-size: 17px;
+            color: rgb(117, 117, 117);
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .deliveryAddr > .deliveryMsg {
+            padding: 20px 24px 0 0;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .deliveryAddr > .deliveryMsg > .insertMag {
+            position: relative;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .deliveryAddr > .deliveryMsg > .insertMag > textarea {
+            width: 100%;
+            height: 40px;
+            font-size: 15px;
+            padding: 7px;
+            resize: none; /* 사용자 임의 변경 불가 */
+            background-color: rgb(255, 255, 255);
+            box-sizing: border-box;
+            border-width: 1px;
+            border-style: solid;
+            border-color: rgb(219, 219, 219);
+            border-radius: 8px;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .deliveryAddr > .deliveryMsg > .insertMag > .countText {
+            position: absolute;
+            bottom: 10px;
+            right: 16px;
+            font-size: 15px;
+            color: rgb(117, 117, 117);
+            user-select: none;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .deliveryAddr > .deliveryMsg > .selectMsg {}
+        main > #contents .WEEKLY_BEST > .orderInfo > .deliveryAddr > .deliveryMsg > .selectMsg > select {
+            width: 100%;
+            border: 1px solid rgb(219, 219, 219);
+            background: rgb(255, 255, 255);
+            resize: none;
+            box-sizing: border-box;
+            height: 40px;
+            font-size: 15px;
+            border-radius: 8px;
+            padding: 7px;
+            padding-right: 30px;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .deliveryAddr > .deliveryMsg > .selectMsg > select > option {}
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderInfo {}
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderInfo > div {
+            margin: 8px 0;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderInfo > div:nth-of-type(1) {
+            border-bottom: 1px solid rgb(234,235,239);
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderInfo > div > h2 {
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 63px;
+            text-align: left;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderInfo > .orderName {
+            text-align: left;
+        
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderInfo > .orderName > div {
+            display: inline-block;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderInfo > .orderName > div:nth-of-type(1) {
+            width: 72px;
+            font-size: 18px;
+            color: rgb(117, 117, 117);
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderInfo > .orderName > div:nth-of-type(2) {}
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderInfo > .orderName > div:nth-of-type(2) > input {
+            width: 270px;
+            padding: 8px 15px 9px;
+            font-size: 15px;
+            border: 1px solid rgb(219, 219, 219);
+            border-radius: 8px;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderInfo > .orderEmail {
+            text-align: left;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderInfo > .orderEmail > div {
+            display: inline-block;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderInfo > .orderEmail > div:nth-of-type(1) {
+            width: 72px;
+            font-size: 18px;
+            color: rgb(117, 117, 117);
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderInfo > .orderEmail input {
+            width: 270px;
+            padding: 8px 15px 9px;
+            font-size: 15px;
+            border: 1px solid rgb(219, 219, 219);
+            border-radius: 8px;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderInfo > .orderEmail span {
+            font-size: 25px;
+            font-weight: 600;
+            color: rgb(41, 41, 41);
+            margin: 0 10px;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderInfo > .orderEmail select {
+            width: 270px;
+            padding: 8px 15px 9px;
+            font-size: 15px;
+            border: 1px solid rgb(219, 219, 219);
+            border-radius: 8px;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderInfo > .orderHp {
+            text-align: left;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderInfo > .orderHp > div {
+            display: inline-block;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderInfo > .orderHp > div:nth-of-type(1) {
+            width: 72px;
+            font-size: 18px;
+            color: rgb(117, 117, 117);
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderInfo > .orderHp select {
+            width: 95px;
+            padding: 8px 15px 9px;
+            font-size: 15px;
+            border: 1px solid rgb(219, 219, 219);
+            border-radius: 8px;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderInfo > .orderHp input {
+            width: 165px;
+            padding: 8px 15px 9px;
+            font-size: 15px;
+            border: 1px solid rgb(219, 219, 219);
+            border-radius: 8px;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderProd > div:nth-of-type(1) {
+            border-bottom: 1px solid rgb(234,235,239);
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderProd h2 {
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 63px;
+            text-align: left;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderProd section {
+            width: 100%;
+            padding: 23px 0;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderProd section > div:nth-of-type(1) {
+            text-align: left;
+            padding: 11px 16px 10px;
+            background-color: #f7f8fa;
+            border: 1px solid rgb(234, 235, 239);
+            border-radius: 4px 4px 0 0;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderProd section > div > div:nth-of-type(1) {
+            display: inline-block;
+            font-size: 17px;
+            line-height: 19px;
+            font-weight: 500;
+            color: rgb(66, 66, 66);
+            width: 74%;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderProd section > div > div:nth-of-type(2) {
+            display: inline-block;
+            font-size: 16px;
+            color: #828c94;
+            margin-left: 90px;
+            border: 1px solid rgb(234, 235, 239);
+            border-radius: 0 0 4px 4px;
+            border-top: 0px;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderProd section > div:nth-of-type(2) {
+            background: #fff;
+            padding: 16px;
+            border: 1px solid rgb(234, 235, 239);
+            border-radius: 0 0 4px 4px;
+            border-top: 0px;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderProd section p:nth-of-type(1) {
+            text-align: left;
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderProd section p:nth-of-type(2) {
+            text-align: left;
+            font-size: 16px;
+            font-weight: 900;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderProd section span {
+            font-size: 14px;
+            color: #757575;
+            margin-left: 10px;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderCoupon { }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderCoupon > div {
+            margin: 8px 0;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderCoupon h2 {
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 63px;
+            text-align: left;
+            border-bottom: 1px solid rgb(234,235,239);
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderCoupon p {
+            font-size: 16px;
+            color: #757575;
+            padding: 11px;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderPoint {
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderPoint > div {
+            margin: 8px 0;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderPoint h2 {
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 63px;
+            text-align: left;
+            border-bottom: 1px solid rgb(234,235,239);
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderPoint > .point {}
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderPoint > .point > div:nth-of-type(1) {}
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderPoint > .point > div:nth-of-type(1) > div {
+            display: inline-block;
+            width: 10%;
+            background: #000;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 7px 3px;
+            border: 1px solid #000;
+            border-radius: 7px;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderPoint > .point input {
+            background: #f5f5f5;
+            border: 1px solid #dbdbdb;
+            height: 40px;
+            font-size: 16px;
+            padding: 0 10px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderPoint > .point > div:nth-of-type(2) {
+            font-size: 17px;
+            font-weight: 500;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderPoint > .point p {}
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderPoint > .point > table div {
+            display: inline-block;
+            background: #000;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 7px 3px;
+            border: 1px solid #000;
+            border-radius: 7px;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderPoint > .point > table td:nth-of-type(2) {
+            padding: 0 8px;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderPoint > .point > table tr:nth-of-type(2)> td:nth-of-type(1) {
+            font-size: 17px;
+            font-weight: 500;
+            padding: 5px 0;
+            text-align: left;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderPoint > .point > table tr:nth-of-type(2)> td:nth-of-type(1) > p {
+            display: inline-block;
+            color: #35aff0;
+            font-size: 18px;
+            font-weight: 700;
+            margin-left: 9px;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderPaymethod {
+            margin: 8px 0;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderPaymethod h2 {
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 63px;
+            text-align: left;
+            border-bottom: 1px solid rgb(234,235,239);
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderPaymethod table {
+            width: 100%;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderPaymethod table td {
+            font-size: 14px;
+            line-height: 17px;
+            margin-bottom: 3px;
+            font-weight: 500;
+            box-sizing: border-box;
+            text-align: center;
+            border: 1px solid rgb(234, 235, 239);
+            border-width: 0px 2px 2px 0;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderPaymethod table tr:nth-of-type(1) > td {
+            border-bottom: none;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderPaymethod table img {
+            width: 60px;
+            height: 60px;
+            margin: 8px 0 4px;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderPaymethod table tr:nth-of-type(2) > td {
+            padding-bottom: 21px;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderPaymethod > .selectCard {
+            padding: 20px 24px 0 0;
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderPaymethod > .selectCard > .selectCardMsg {
+        }
+        main > #contents .WEEKLY_BEST > .orderInfo > .orderPaymethod > .selectCard select {
+            width: 100%;
+            border: 1px solid rgb(219, 219, 219);
+            background: rgb(255, 255, 255);
+            resize: none;
+            box-sizing: border-box;
+            height: 40px;
+            font-size: 15px;
+            border-radius: 8px;
+            padding: 7px;
+            padding-right: 30px;
+            margin-bottom: 10px;
+        }
+        main > #contents .WEEKLY_BEST > .orderPay {
+            display: inline-block;
+            box-sizing: border-box;
+            width: 39%;
+            padding: 20px 24px 23px;
+            position: fixed;
+            right: 78px;
+            border: 1px solid rgb(234,235,239);
+        }
+        main > #contents .WEEKLY_BEST > .orderPay li:nth-of-type(1) {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-align: left;
+        }
+        main > #contents .WEEKLY_BEST > .orderPay li:nth-of-type(2) {}
+        main > #contents .WEEKLY_BEST > .orderPay table {
+            width: 100%;
+            margin-bottom: 35px;
+        }
+        main > #contents .WEEKLY_BEST > .orderPay table td {
+            padding: 10px 0;
+            font-size: 17px;
+        }
+        main > #contents .WEEKLY_BEST > .orderPay table tr > td:nth-of-type(1) {
+            color: #757575;
+            text-align: left;
+        }
+        main > #contents .WEEKLY_BEST > .orderPay table tr > td:nth-of-type(2) {
+            text-align: right;
+        }
+        main > #contents .WEEKLY_BEST > .orderPay table tr:nth-of-type(1) > td:nth-of-type(2) {
+            font-weight: 700;
+        }
+        main > #contents .WEEKLY_BEST > .orderPay li:nth-of-type(3) > div:nth-of-type(1) {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-align: left;
+            display: inline-block;
+            width: 73%;
+        }
+        main > #contents .WEEKLY_BEST > .orderPay li:nth-of-type(3) > div:nth-of-type(2) {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-align: right;
+            display: inline-block;
+            color: #35aff0;
+        }
+        main > #contents .WEEKLY_BEST > .orderPay li:nth-of-type(3) {
+            border-top: 1px solid rgb(234, 235, 239);
+            padding-top: 20px;
+        }
+        main > #contents .WEEKLY_BEST > .orderPay li:nth-of-type(4) {
+            text-align: left;
+        }
+        main > #contents .WEEKLY_BEST > .orderPay li:nth-of-type(4) > div {
+        }
+        main > #contents .WEEKLY_BEST > .orderPay li:nth-of-type(4) > div:nth-of-type(1) {}
+        main > #contents .WEEKLY_BEST > .orderPay li:nth-of-type(4) > div:nth-of-type(1) span {
+            color: #000;
+            font-size: 18px;
+            padding-left: 11px;
+        }
+        main > #contents .WEEKLY_BEST > .orderPay li:nth-of-type(4) > div:nth-of-type(2) {
+            background: rgb(247, 248, 250);
+            padding: 12px;
+        }
+        main > #contents .WEEKLY_BEST > .orderPay li:nth-of-type(4) > div > label {
+            display: inline-block;
+            margin: 10px 0;
+        }
+        main > #contents .WEEKLY_BEST > .orderPay li:nth-of-type(4) > div > label > input {}
+        main > #contents .WEEKLY_BEST > .orderPay li:nth-of-type(4) > div > label span {
+            color: #656e75;
+            font-size: 16px;
+            line-height: 24px;
+            margin-left: 8px;
+        }
+        main > #contents .WEEKLY_BEST > .orderPay li:nth-of-type(5) {
+            text-align: left;
+            font-size: 15px;
+            color: rgb(101, 110, 117);
+            margin: 12px 0;
+        }
+        main > #contents .WEEKLY_BEST > .orderPay li:nth-of-type(6) {
+            text-align: left;
+            font-size: 13px;
+            color: rgb(101, 110, 117);
+            margin: 12px 0;
+        }
+        main > #contents .WEEKLY_BEST > .orderPay li:nth-of-type(7) {
+            border-top: 1px solid rgb(234, 235, 239);
+        }
+        main > #contents .WEEKLY_BEST > .orderPay li:nth-of-type(7) > button {
+            width: 100%;
+            height: 60px;
+            font-size: 21px;
+            color: #fff;
+            background: #000;
+            border: 1px solid #000;
+            border-radius: 6px;
+            margin: 41px 0 10px 0;
+        }
+
+
+
+
+        footer {
+            width: 100%;
+            height: auto;
+            text-align: center;
+            background: #000;
+        }
+        footer > .footerIn {
+            width: 90%;
+            height: auto;
+            box-sizing: border-box;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        footer > .footerIn > .f_menu {
+            margin-top: 30px;
+            position: relative;
+        }
+        footer > .footerIn > .f_menu a {
+            color: #fff;
+            font-size: 18px;
+            margin-right: 50px;
+        }
+        footer > .footerIn > .f_menu .sns {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        footer > .footerIn > .f_menu .sns > a {
+            margin: 0 0 0 20px;
+        }
+        footer > .footerIn > .f_menu .sns > a > img {
+            width: 26px;
+        }
+        footer > .footerIn > .f_menu .sns > a:nth-of-type(3) > img {
+            width: 33px;
+        }
+        footer > .footerIn .f_block {
+            display: flex;
+        }
+        footer > .footerIn .f_block1 {
+            margin-top: 30px;
+            width: 60%;
+        }
+        footer > .footerIn .f_block1 > .f_info {
+            text-align: left;
+        }
+        footer > .footerIn .f_block1 > .f_info > h4 {
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        footer > .footerIn .f_block1 > .f_info > li {
+            color: #fff;
+            margin-bottom: 3px;
+        }
+        footer > .footerIn .f_block1 > .f_info > li > i {
+            font-style: normal;
+            font-weight: 600;
+            font-size: 11px;
+            color: #999;
+        }
+        footer > .footerIn .f_block1 > .f_info > .copyright {
+            font-size: 12px;
+        }
+        footer > .footerIn .f_block2 {
+            margin-top: 30px;
+            width: 40%;
+            color: #fff;
+        }
+        footer > .footerIn .f_block2 > .f_cs {
+            text-align: left;
+        }
+        footer > .footerIn .f_block2 > .f_cs > h4 {
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        footer > .footerIn .f_block2 > .f_cs > li {
+            color: #fff;
+            margin-bottom: 3px;
+        }
+        footer > .footerIn .f_block2 > .f_cs > .cs_tel {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        footer > .footerIn .f_terms {
+            margin-top: 100px;
+            position: relative;
+        }
+        footer > .footerIn .f_terms > .terms {}
+        footer > .footerIn .f_terms > .terms > li {
+            display: inline-block;
+            margin: 0 30px;
+            color: #fff;
+        }
+        footer > .footerIn .f_terms > .terms > li > a {
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <header>
+            <div class="headerIn">
+                <section class="logo">AROUND MARKET</section>
+                <section class="lnb">
+                    <a href="#">LOGIN</a>
+                    <a href="#">JOIN US</a>
+                    <a href="#">ORDER</a>
+                    <a href="#">MY PAGE</a>
+                    <a href="#">HEART</a>
+                    <a href="#">COMMUNITY</a>
+                </section>
+                <div class="gnb">
+                    <table>
+                        <tr>
+                            <div class="cate_div">
+                                <a class="categories" href="#">카테고리</a>
+                                <div class="dropdown-cate">
+                                    <ul>
+                                        <li><a href="#">의류</a></li>
+                                        <li><a href="#">패션잡화</a></li>
+                                        <li><a href="#">뷰티</a></li>
+                                        <li><a href="#">출산/유아동</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="#">식품</a></li>
+                                        <li><a href="#">생활용품</a></li>
+                                        <li><a href="#">홈인테리어</a></li>
+                                        <li><a href="#">가전디지털</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="#">스포츠/레저</a></li>
+                                        <li><a href="#">자동차용품</a></li>
+                                        <li><a href="#">도서/음반/DVD</a></li>
+                                        <li><a href="#">완구/취미</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="#">문구/오피스</a></li>
+                                        <li><a href="#">반려동물용품</a></li>
+                                        <li><a href="#">헬스/건강식품</a></li>
+                                        <li><a href="#">티켓</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="#">인기</a>
+                            <a href="#">추천</a>
+                            <a href="#">신규</a>
+                            <a href="#">공구요청</a>
+                        </tr>
+                    </table>
+                </div>
+                <div class="searchBar">
+                    <form class="search-container" action="#">
+                        <div class="search">
+                            <input id="search-box" type="text" class="search-box" name="q"/>
+                            <button type="submit" class="searchBtn">
+                                <input type="image" src="../img/btn_search.png" id="search-submit"/>
+                            </button>
+                            
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div id="contents">
+                <div class="blank1"></div>
+                <div class="WEEKLY_BEST">
+                    <div class="orderInfo">
+                        <h2>주문/결제</h2>
+                        <section class="deliveryAddr">
+                            <div>
+                                <h2>배송지</h2>
+                            </div>
+                            <div class="addr">
+                                부산광역시 수영구 299 루미너스 빌딩 10층
+                            </div>
+                            <div class="info">
+                                이동글 010-2023-0216
+                            </div>
+                            <div class="deliveryMsg">
+                                <div class="insertMag">
+                                    <textarea placeholder="배송 요청사항을 입력해주세요"></textarea>
+                                    <div class="countText">0 / 50</div>
+                                </div>
+                                <div class="selectMsg">
+                                    <select>
+                                        <option value="0">직접입력</option>
+                                        <option value="1">부재시 문앞에 놓아주세요</option>
+                                        <option value="2">배송전에 미리 연락주세요</option>
+                                        <option value="3">부재시 경비실에 맡겨 주세요</option>
+                                        <option value="4">부재시 전화주시거나 문자 남겨 주세요</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="orderInfo">
+                            <div>
+                                <h2>주문자</h2>
+                            </div>
+                            <div class="orderName">
+                                <div>이름</div>
+                                <div><input type="text" value="이동글"></div>
+                            </div>
+                            <div class="orderEmail">
+                                <div>이메일</div>
+                                <div><input type="text" value="circle"></div>
+                                <span>@</span>
+                                <div>
+                                    <select>
+                                        <option value="0">naver.com</option>
+                                        <option value="1">hanmail.net</option>
+                                        <option value="2">daum.net</option>
+                                        <option value="3">gamil.com</option>
+                                        <option value="4">kakao.com</option>
+                                        <option value="5">nate.com</option>
+                                        <option value="6">hotmail.com</option>
+                                        <option value="7">outlook.com</option>
+                                        <option value="8">icloud.com</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="orderHp">
+                                <div>휴대전화</div>
+                                <div>
+                                    <select>
+                                        <option value="0">010</option>
+                                        <option value="1">011</option>
+                                        <option value="2">016</option>
+                                        <option value="3">017</option>
+                                        <option value="4">018</option>
+                                        <option value="5">109</option>
+                                    </select>
+                                </div>
+                                <div><input type="text" value="2023-0216"></div>
+                            </div>
+                        </section>
+                        <section class="orderProd">
+                            <div>
+                                <h2>주문상품</h2>
+                            </div>
+                            <section>
+                                <div>
+                                    <div>동글마켓</div>
+                                    <div style="border: none;">배송비 무료</div>
+                                </div>
+                                <div>
+                                    <p>product-name</p>
+                                    <p>23,000원 <span>1개</span></p>
+                                    
+                                </div>
+                            </section>
+                        </section>
+                        <section class="orderCoupon">
+                            <div>
+                                <h2>쿠폰</h2>
+                                <p>사용 가능한 쿠폰이 없습니다</p>
+                            </div>
+                        </section>
+                        <section class="orderPoint">
+                            <div>
+                                <h2>포인트</h2>
+                            </div>
+                            <div class="point">
+                                <table border="0">
+                                    <tr>
+                                        <td><input type="text" value="0"></td>
+                                        <td><div>전액사용</div></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">사용 가능 포인트<p>1,090 P</p></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </section>
+                        <section class="orderPaymethod">
+                            <div>
+                                <h2>결제수단</h2>
+                            </div>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <img src="../img/img_card.png" alt="카드">
+                                    </td>
+                                    <td>
+                                        <img src="../img/img_vbank.png" alt="무통장입금">
+                                    </td>
+                                    <td>
+                                        <img src="../img/img_kakaopay.webp" alt="카카오페이">
+                                    </td>
+                                    <td>
+                                        <img src="../img/img_toss_v2.webp" alt="토스페이">
+                                    </td>
+                                    <td>
+                                        <img src="../img/img_naver.webp" alt="네이버페이">
+                                    </td>
+                                    <td>
+                                        <img src="../img/img_payco.png" alt="페이코">
+                                    </td>
+                                    <td>
+                                        <img src="../img/img_phone.png" alt="핸드폰">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>카드</td>
+                                    <td>무통장입금</td>
+                                    <td>카카오페이</td>
+                                    <td>토스페이</td>
+                                    <td>네이버페이</td>
+                                    <td>페이코</td>
+                                    <td>핸드폰</td>
+                                </tr>
+                            </table>
+                            <div class="selectCard">
+                                <div class="selectCardMsg">
+                                    <select>
+                                        <option value="0">카드를 선택해주세요.</option>
+                                        <option value="1">삼성카드</option>
+                                        <option value="2">우리카드</option>
+                                        <option value="3">신한카드</option>
+                                        <option value="4">현대카드</option>
+                                        <option value="5">KB국민카드</option>
+                                        <option value="6">롯데카드</option>
+                                        <option value="7">NH농협카드</option>
+                                        <option value="8">비씨카드</option>
+                                        <option value="9">하나카드</option>
+                                        <option value="10">씨티카드</option>
+                                        <option value="11">카카오뱅크카드</option>
+                                    </select>
+                                </div>
+                                <div class="installment">
+                                    <select>
+                                        <option value="0">일시불</option>
+                                        <option value="0">1개월</option>
+                                        <option value="0">2개월</option>
+                                        <option value="0">3개월</option>
+                                        <option value="0">4개월</option>
+                                        <option value="0">5개월</option>
+                                        <option value="0">6개월</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="orderPay">
+                        <ul>
+                            <li>결제 금액</li>
+                            <li>
+                                <table border="0">
+                                    <tr>
+                                        <td>총 상품 금액</td>
+                                        <td>23,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>배송비</td>
+                                        <td>0원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>쿠폰 사용</td>
+                                        <td>0원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>포인트 사용</td>
+                                        <td>0원</td>
+                                    </tr>
+                                </table>
+                            </li>
+                            <li>
+                                <div>최종결제금액</div>
+                                <div>23,000원</div>
+                            </li>
+                            <li>
+                                <div>
+                                    <label>
+                                        <input type="checkbox">
+                                        <span>아래 내용에 모두 동의합니다 (필수)</span>
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        <input type="checkbox">
+                                        <span>개인정보 수집 이용 및 제3자 제공 동의 (필수)</span>
+                                    </label>
+                                    <label>
+                                        <input type="checkbox">
+                                        <span>결제 대행 서비스 이용약관 동의 (필수)</span>
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                본인은 만 14세 이상이며, 주문 내용을 확인하였습니다.
+                            </li>
+                            <li>
+                                (주)00마켓은 통신판매중개자로 거래 당사자가 아니므로, 판매자가 등록한 상품정보 및 거래 등에 대해 책임을 지지 않습니다 (단, ㈜00마켓이 판매자로 등록 판매한 상품은 판매자로서 책임을 부담합니다).
+                            </li>
+                            <li>
+                                <button>23,000원 결제하기</button>
+                            </li>
+                        </ul>
+                    </div>
+                <div class="blank1"></div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footerIn">
+                <div class="f_menu">
+                    <table>
+                        <tr>
+                            <td><a href="#">ABOUT</a></td>
+                            <td><a href="#">NOTICE</a></td>
+                            <td><a href="#">CS CENTER</a></td>
+                        </tr>
+                    </table>
+                    <div class="sns">
+                        <a href="#"><img src="../img/instagram.png" alt="인스타그램"></a>
+                        <a href="#"><img src="../img/facebook.png" alt="페이스북"></a>
+                        <a href="#"><img src="../img/youtube.png" alt="유튜브"></a>
+                    </div>
+                </div>
+                <div class="f_block">
+                    <div class="f_block1">
+                        <ul class="f_info">
+                            <h4>INFORMATION</h4>
+                            <li><i>company.</i>&nbsp;&nbsp;주식회사 우동친구</li>
+                            <li><i>owner.</i>&nbsp;&nbsp;김우동</li>
+                            <li><i>email.</i>&nbsp;&nbsp;udonmarket@gmail.com</li>
+                            <li><i>corporate registration num.</i>&nbsp;&nbsp;123-45-67890</li>
+                            <li><i>online license.</i>&nbsp;&nbsp;제 2023-우동구-0123호</li>
+                            <li><i>address.</i>&nbsp;&nbsp;부산광역시 수영구 299 루미너스 빌딩 10층</li>
+                            <br>
+                            <li class="copyright">copyright© udonmarket All rights reserved.</li>
+                            </ul>
+                    </div>
+                    <div class="f_block2">
+                        <ul class="f_cs">
+                            <h4>C/S CENTER</h4>
+                            <li class="cs_tel">070-1234-1234</li>
+                            <li>MON - FRI AM 09:00 - PM 17:00</li>
+                            <li>BREAK PM 12:00 - PM 13:00</li>
+                            <li>SAT, SUN, HOLIDAY
+                                <span style="color:#ce5c5c">closed</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="f_terms">
+                    <ul class="terms">
+                        <li><a href="#">ABOUT US</a></li>
+                        <li>|</li>
+                        <li><a href="#">TERMS</a></li>
+                        <li>|</li>
+                        <li><a href="#">FINANCE POLICY</a></li>
+                        <li>|</li>
+                        <li><a href="#">LOCATION POLICY</a></li>
+                        <li>|</li>
+                        <li><a href="#">PRIVACY POLICY</a></li>
+                        <li>|</li>
+                        <li><a href="#">SHOPPING GUIDE</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
